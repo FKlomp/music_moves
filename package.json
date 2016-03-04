@@ -1,0 +1,17 @@
+{
+  "name": "music_moves",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ferdi Klomp",
+  "license": "ISC",
+  "dependencies": {
+    "echonest-middleware": "0.0.0",
+    "echonestjs": "0.0.5",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.7"
+  }
+}
