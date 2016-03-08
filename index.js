@@ -40,17 +40,19 @@ var Server = {
     startServer: function () {
         app.use(express.static('public'));
         
-        app.use('/api', function (req, res) {
+        app.get('/api', function (req, res) {
             res.send('API works!');
         }.bind(this));
         
-        app.use('/api/echonest', echonestMiddleware(ECHONEST_API_KEY))
+        app.get('/api/echonest', echonestMiddleware(ECHONEST_API_KEY))
         
-        app.get('/api/streamwatch/artist_info', function (req, res) {
-            var mbId = req.query.mbId;
+        app.get('/api/streamwatch/:method', function (req, res) {
+            var query = {};
             
-            this.db.collection('artist_info', function(err, collection) {
-                collection.find({ mbId: mbId }).toArray(function(err, docs) {
+            if (req.query.mbId) query.mbId = req.query.mbId;
+
+            this.db.collection(req.params.method, function(err, collection) {
+                collection.find(query).toArray(function(err, docs) {
                     res.json(docs);
                 });
             });
