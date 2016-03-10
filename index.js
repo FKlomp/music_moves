@@ -1,9 +1,5 @@
-var ECHONEST_API_KEY = 'ECHONEST_API_KEY',
-    MONGODB_URL = 'MONGODB_URL',
-    MONGODB_USERNAME = 'MONGODB_USERNAME',
-    MONGODB_PASSWORD = 'MONGODB_PASSWORD'
-
-var express = require('express'),
+var config = require('./config'),
+    express = require('express'),
     echonest = require('echonestjs'),
     echonestMiddleware = require('echonest-middleware'),
     mongoClient = require('mongodb').MongoClient,
@@ -13,16 +9,16 @@ var Server = {
     db: null,
     
     init: function () {
-        echonest.init(ECHONEST_API_KEY);
+        echonest.init(config.ECHONEST_API_KEY);
         
-        mongoClient.connect(MONGODB_URL, function(err, db) {
+        mongoClient.connect(config.MONGODB_URL, function(err, db) {
             if (err) {
                 console.log('Error connecting to MongoDB', err);
                 exit();
             } else {
                 console.log('Connected to MongoDB');
 
-                db.authenticate(MONGODB_USERNAME, MONGODB_PASSWORD, function(err, result) {
+                db.authenticate(config.MONGODB_USERNAME, config.MONGODB_PASSWORD, function(err, result) {
                     if (err) {
                         console.log('Error performing MongoDB authentication', err);
                         exit();
@@ -41,10 +37,11 @@ var Server = {
         app.use(express.static('public'));
         
         app.get('/api', function (req, res) {
+            mongoClient.
             res.send('API works!');
         }.bind(this));
         
-        app.get('/api/echonest', echonestMiddleware(ECHONEST_API_KEY))
+        app.get('/api/echonest', echonestMiddleware(config.ECHONEST_API_KEY))
         
         app.get('/api/streamwatch/:method', function (req, res) {
             var query = {};
