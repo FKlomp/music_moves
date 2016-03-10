@@ -2,15 +2,16 @@
 
 ### Installation
 
-* Install NodeJS https://nodejs.org/en/
-* Download source
-* In index.js, modify:
-1. ECHONEST_API_KEY
-2. MONGODB_URL
-3. MONGODB_USERNAME
-4. MONGODB_PASSWORD
-* From root folder, execute "npm install"
-* From root folder, Run "node ."
+1. Install NodeJS https://nodejs.org/en/
+2. Clone project
+ * git clone https://github.com/FKlomp/music_moves.git
+3. In config.js, modify:
+ * ECHONEST_API_KEY
+ * MONGODB_URL
+ * MONGODB_USERNAME
+ * MONGODB_PASSWORD
+4. From root folder, execute "npm install"
+5. From root folder, Run "node ."
 
 ### Music Moves
 Sample App located in /public folder available at:
@@ -25,17 +26,27 @@ http://localhost:3000/api/
 StreamWatch API calls at endpoint:
 http://localhost:3000/api/streamwatch/
 
-**Get Artist Info**
+**Search artists**
 
 * **URL**
-  /artist_info
+   /artist
 * **Method:**
-  `GET`
+   `GET`
 *  **URL Params**
-   `mbId=[string]`
+   `q=[string]` => name of artist
+*  **Example**
+    http://localhost:3000/api/streamwatch/artist?q=hazes
 
-Example for retrieving artist_info:
-http://localhost:3000/api/streamwatch/artist_info?mbId=453f1594-112e-4d3c-921a-8d14e9c97b2e
+**Search songs**
+
+* **URL**
+   /song
+* **Method:**
+   `GET`
+*  **URL Params**
+   `q=[string]` => title of artist
+*  **Example**
+    http://localhost:3000/api/streamwatch/song?q=vlieger
 
 *TODO Add nessecary API calls, needed for App.
 
