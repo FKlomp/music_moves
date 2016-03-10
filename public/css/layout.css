@@ -6,4 +6,57 @@
 
 body {
     min-height: 100%;
+    font-family: arial;
+}
+
+.wrapper {
+	height: 100vh;
+	background: white;
+	display: flex;
+	flex-direction: column;
+}
+
+.map {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.filter {
+	background: #F5F5F5;
+	flex-grow: 2;
+	border-top: 2px solid #E9E9E9;
+}
+
+.filter-section {
+	background: white;
+	border-radius: 3px;
+	margin: 15px;
+	padding: 20px;
+}
+
+.filter-results {
+	text-align: left;
+	width: 100%;
+}
+
+.filter-results thead tr {
+	line-height: 40px;
+	font-weight: bold;
+}
+
+.filter-results tbody tr {
+	line-height: 35px;
+	border-top: 1px solid #E9E9E9;
+}
+
+.filter-results tbody tr:hover {
+	background: #F5F5F5;
+}
+
+input {
+	line-height: 40px;
+	border-radius: 3px;
+	width: 100%;
+	font-size: 16px;
+	padding: 0 10px;
 }

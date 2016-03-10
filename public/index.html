@@ -7,17 +7,60 @@
 		<meta name="description" content="D3 assignment, uva 2016">
 		<meta name="author" content="Lisette Pool">
 		<link href="css/main.css" rel="stylesheet" type="text/css">
-		<link href="js/vendor/d3-geomap/css/d3.geomap.css" rel="stylesheet">
-        <script src="js/vendor/d3/d3.min.js" type="text/javascript"></script>
-        <script src="js/vendor/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
-        <script src="js/vendor/d3-geomap/js/d3.geomap.js"></script>
+		<script src="js/d3/d3.min.js" type="text/javascript"></script>
+		<link href="d3-geomap/css/d3.geomap.css" rel="stylesheet">
+        <script src="d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
+        <script src="d3-geomap/js/d3.geomap.js"></script>
 	</head>
 
 	<body>
-		<div class="content">
-				<div id="map"></div>
-		</div>
-		<div class="filter">Filter</div>
+		<div class="wrapper">
+			<div class="map" id="map"></div>
+			<div class="filter">
+				<div class="filter-section">
+					<input type="text" placeholder="Search for artists, songs or genres..."></input>
+				</div>
+				<div class="filter-section">
+					<table class="filter-results">
+						<thead>
+							<tr>
+								<th>Artist</th>
+								<th>Song</th>
+								<th>Genre</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Artiestje uit nederland</td>
+								<td>Leuk liedje</td>
+								<td>Pop</td>
+							</tr>
+							<tr>
+								<td>Artiestje uit nederland</td>
+								<td>Leuk liedje</td>
+								<td>Pop</td>
+							</tr>
+							<tr>
+								<td>Artiestje uit nederland</td>
+								<td>Leuk liedje</td>
+								<td>Pop</td>
+							</tr>
+							<tr>
+								<td>Artiestje uit nederland</td>
+								<td>Leuk liedje</td>
+								<td>Pop</td>
+							</tr>
+							<tr>
+								<td>Artiestje uit nederland</td>
+								<td>Leuk liedje</td>
+								<td>Pop</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
+
 		<script>
 
 			d3.csv("countriesRandom.csv", function(d) {
