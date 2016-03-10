@@ -96,7 +96,7 @@ var Server = {
             if (req.query.q) query['lastfm_info.artist.name'] = new RegExp(req.query.q, 'i');
 
             this.mongoDB.collection('artist_info', function(err, collection) {
-                collection.find(query).toArray(function(err, docs) {
+                collection.find(query).limit(20).toArray(function(err, docs) {
                     res.json(docs);
                 });
             });
@@ -110,7 +110,7 @@ var Server = {
             if (req.query.q) query.song = new RegExp(req.query.q, 'i');
 
             this.mongoDB.collection('song_info', function(err, collection) {
-                collection.find(query).toArray(function(err, docs) {
+                collection.find(query).limit(20).toArray(function(err, docs) {
                     res.json(docs);
                 });
             });
