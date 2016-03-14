@@ -1,0 +1,10 @@
+.languagechart .axis path,
+.languagechart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.languagechart rect:last-child {
+	fill: #FFE019!important;
+}
