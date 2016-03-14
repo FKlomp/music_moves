@@ -9,6 +9,18 @@ body {
     font-family: arial;
 }
 
+.edge {
+  fill: none;
+  stroke: #2a9fd6;
+  stroke-width: 1.5px;
+}
+
+#search-results {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+}
+
 .wrapper {
 	height: 100vh;
 	background: white;
