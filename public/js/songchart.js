@@ -1,10 +1,10 @@
 //set up canvas and bar sizes
-var canvasWidth = 400,
-    canvasHeight = 300,
+var canvasWidth_songchart = 400,
+    canvasHeight_songchart = 300,
     otherMargins = 40,
     leftMargin = 10,
-    maxBarWidth = canvasHeight - - otherMargins - leftMargin
-    maxChartHeight = canvasHeight - (otherMargins * 2);
+    maxBarWidth = canvasHeight_songchart - - otherMargins - leftMargin
+    maxChartHeight = canvasHeight_songchart - (otherMargins * 2);
 
 //set up linear scales
 var xScale = d3.scale.linear()
@@ -14,8 +14,8 @@ var yScale = d3.scale.ordinal();
 
 //add svg to songchart
 var chart = d3.select(".songchart").append("svg")
-                            .attr("width",canvasWidth)
-                            .attr("height", canvasHeight);                       
+                            .attr("width",canvasWidth_songchart)
+                            .attr("height", canvasHeight_songchart);                       
 
 //set up axis                            
 var xAxis = d3.svg.axis()
@@ -123,7 +123,7 @@ var yAxis = d3.svg.axis()
     chart.append("text")
           .attr("dy", "8")
           .attr("x", (maxBarWidth / 2) + leftMargin)
-          .attr("y", canvasHeight - (otherMargins / 3))
+          .attr("y", canvasHeight_songchart - (otherMargins / 3))
           .attr("text-anchor", "middle")
           .attr("font-family", "sans-serif")
           .attr("font-size", "12px")
