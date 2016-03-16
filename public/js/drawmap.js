@@ -15,7 +15,7 @@ var map = d3.geomap.choropleth()
     .height(height)
     .scale(200)
     .translate([width / 2, height / 2])
-    .zoomFactor(2)
+    .zoomFactor(10)
     .colors(colorbrewer.Reds[9])
     .column('2014-04-01T00:00:00.000Z') //nog animeren
     .domain(domainArray)
