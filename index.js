@@ -88,6 +88,26 @@ var Server = {
         
         app.get('/api/echonest', echonestMiddleware(config.ECHONEST_API_KEY))
         
+        app.get('/api/streamwatch/artist/country', function (req, res) {
+            var query = {};
+
+            if (req.query.q) query.country = new RegExp(req.query.q, 'i');
+            
+            this.mongoDB.collection('artist_stats_geo', function(err, collection) {
+                collection.aggregate([
+                    {
+                        $match: { mbId: { $in: this.artistIds }}
+                    },{
+                        $group: { _id: "$country", count: { $sum: "$count" }, population: { $first: "$population" }}
+                    }
+                ]).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
+        }.bind(this));
+        
         app.get('/api/streamwatch/artist', function (req, res) {
             var query = {
                 mbId: { $in: this.artistIds }

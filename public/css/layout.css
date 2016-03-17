@@ -13,6 +13,12 @@ body {
   fill: none;
   stroke: #2a9fd6;
   stroke-width: 1.5px;
+  stroke-opacity: 0.2;
+  pointer-events: none;
+}
+
+.lines {
+    overflow: visible;
 }
 
 #search-results {
