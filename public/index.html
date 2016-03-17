@@ -23,11 +23,37 @@
                     map.drawLines();
                 });
             });
-            
         </script>
 	</head>
 
 	<body>
+        <div id="tour-playlist" class="tour-playlist">
+            <h3>Suggested tour playlist</h3>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <nav class="navbar navbar-default navbar-fixed-top">
             <form class="navbar-form navbar-left" role="search" style="width: 100%;">
                 <div class="input-group" style="width: 100%;">
@@ -40,6 +66,7 @@
                         <button id="search-submit" class="btn btn-primary" type="button">Search</button>
                     </span>
                 </div>
+                <button id="plan-tour-button" onClick="controlTour()" class="btn plan-tour-button btn-warning btn-primary" type="button">Start tour</button>
             </form>
         </nav>
         <div id="search-results" class="list-group"></div>
@@ -75,5 +102,19 @@
                 </div>
             </div>
         </div>
+        <script>
+            //Change text of start tour button & hide/show playlist
+            function controlTour() {
+                var element = document.getElementById('plan-tour-button');
+                if (element.innerHTML === 'Start tour') {
+                    element.innerHTML = 'End tour';
+                    document.getElementById('tour-playlist').style.display = 'block';
+                }
+                else {
+                    element.innerHTML = 'Start tour';
+                    document.getElementById('tour-playlist').style.display = 'none';
+                }
+            }
+        </script>
 	</body>
 </html>
