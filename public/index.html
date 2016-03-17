@@ -17,9 +17,27 @@
         <script src="js/vendor/bootstrap/js/bootstrap.min.js"></script>
         
         <script src="js/search_bar.js" type="text/javascript"></script>
+
+        <script>
+        function toggleOverlay(){
+            var overlay = document.getElementById('overlay');
+            var specialBox = document.getElementById('specialBox');
+            overlay.style.opacity = .8;
+            if(overlay.style.display == "block"){
+                overlay.style.display = "none";
+                specialBox.style.display = "none";
+            } else {
+                overlay.style.display = "block";
+                specialBox.style.display = "block";
+            }
+        }
+        </script>
+
 	</head>
 
+
 	<body>
+        
         <nav class="navbar navbar-default navbar-fixed-top">
             <form class="navbar-form navbar-left" role="search" style="width: 100%;">
                 <div class="input-group" style="width: 100%;">
@@ -34,6 +52,38 @@
                 </div>
             </form>
         </nav>
+
+        <div id="overlay"></div>
+        <!-- End Overlay -->
+        <!-- Start Special Centered Box -->
+
+        <div id="specialBox">
+                                
+            <div class="absolute">
+
+                <div class="animation">
+                <h1>
+                <div id="fountainTextG"><div id="fountainTextG_1" class="fountainTextG">M</div><div id="fountainTextG_2" class="fountainTextG">u</div><div id="fountainTextG_3" class="fountainTextG">s</div><div id="fountainTextG_4" class="fountainTextG">i</div><div id="fountainTextG_5" class="fountainTextG">c</div><div id="fountainTextG_6" class="fountainTextG">M</div><div id="fountainTextG_7" class="fountainTextG">o</div><div id="fountainTextG_8" class="fountainTextG">v</div><div id="fountainTextG_9" class="fountainTextG">e</div><div id="fountainTextG_10" class="fountainTextG">s</div>
+                </h1>
+                </div>
+                
+                <div id="bla">
+                <p>Search artist or songs produced in Amsterdam</p> 
+                </div>
+                <button class="button button4" onmousedown="toggleOverlay()">Let's Start!</button>
+            </div>
+        </div>
+
+        
+        <!-- End Special Centered Box -->
+        <!-- Start Normal Page Content -->
+        <div id="wrapper">
+          <h2>Music Moves</h2>
+          <p></p>
+          <button onmousedown="toggleOverlay()">Apply Overlay</button>
+        </div>
+
+
         <div id="search-results" class="list-group"></div>
 		<div class="map" id="map" style="margin-top: 50px;"></div>
         
