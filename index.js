@@ -9,7 +9,7 @@ var nedb = require('nedb'),
     app = express();
 
 var Server = {
-    online: false,
+    online: true,
     mongoDB: null,
     localDB: {},
     artistIds: [],
