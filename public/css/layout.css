@@ -9,11 +9,21 @@ body {
     font-family: arial;
 }
 
+#loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1040;
+}
+
 .edge {
   fill: none;
   stroke: #2a9fd6;
   stroke-width: 1.5px;
-  stroke-opacity: 0.2;
+  stroke-opacity: 0.8;
   pointer-events: none;
 }
 

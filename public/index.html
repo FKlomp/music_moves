@@ -13,21 +13,51 @@
         <script src="js/vendor/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
         <script src="js/vendor/d3-geomap/js/d3.geomap.js"></script>
         <script src="js/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/js/map.js"></script>
+        <script src="js/map.js"></script>
         <script src="js/search_bar.js" type="text/javascript"></script>
         
         <script>
-        
+            
+            function start () {
+                var promise = new Promise(function(resolve, reject) {
+                    d3.json('api/streamwatch/artist/country', function(err, data) {
+                        (err) ? reject(err) : resolve(data);
+                    });
+                })
+                .then(loadMap);
+            };
+            
+            function loadMap(data) {
+                map.setData(data);
+                
+                hideLoader();
+                
+                map.drawLines();
+                setTimeout(map.update.bind(map), 1000)
+                setTimeout(map.hideLines.bind(map), 2000)
+                
+            }
+            
             $(document).ready(function () {
-                window.map = new Map(function () {
-                    map.drawLines();
-                });
+                window.showLoader = function () {
+                    $('#loader').show();
+                }
+                
+                window.hideLoader = function (callback) {
+                    $('#loader').fadeOut(400, callback);
+                }
+                
+                window.map = new Map({
+                    onReady: start
+                });   
+                window.searchBar = new SearchBar();
             });
             
         </script>
 	</head>
 
 	<body>
+        <div id="loader" style="text-align: center;"><img style="margin-top: 200px;" src="images/ring-alt.svg"></div>
         <nav class="navbar navbar-default navbar-fixed-top">
             <form class="navbar-form navbar-left" role="search" style="width: 100%;">
                 <div class="input-group" style="width: 100%;">
