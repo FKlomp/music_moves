@@ -182,6 +182,118 @@ Map.prototype.drawLines = function () {
         .attr("stroke-dashoffset", 0)
 }
 
+Map.prototype.drawDots = function(){
+
+    var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
+        cleanPath = d3.geo.path().projection(null),
+
+        dots = [];
+
+    for (var i = 0; i < this.data.length; i++) {
+        var id = this.data[i]._id,
+            count = this.data[i].count;
+    
+        for (var y = 0; y < features.length; y++) {
+            if ( features[y].id ==  id ){
+                dots.push(cleanPath.centroid(features[y]));
+                break;
+            }
+        }
+    }
+
+    var fiveDots = [[4.8909347, 52.3738007], [51.124213, 10.195313],[47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]]
+
+    //console.log(dots);
+    d3.select('g.zoom')
+        .append('g')
+        .attr('class', 'dots')
+        .selectAll("path .edge") 
+        .data(fiveDots).enter()
+        .append("circle")
+        .attr("cx", function (d) { 
+            console.log(d);
+            return map.projection(d)[0]; })
+        .attr("cy", function (d) { 
+            console.log(d);
+            return map.projection(d)[1]; })
+        .attr("r", "8px")
+        .attr("fill", "blue")
+}
+
+Map.prototype.drawDotLines = function () {
+
+    var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
+        cleanPath = d3.geo.path().projection(null),
+        routeLines = [];
+
+    /*var tourRoute = [
+                        [[4.8909347, 52.3738007],   [51.124213, 10.195313]],
+                        [[51.124213, 10.195313],    [47.040182, 1.757813]],
+                        [[47.040182, 1.757813],     [52.908902, -8.789062]],
+                        [[52.908902, -8.789062],    [53.330873, -1.054687]],
+                        [[53.330873, -1.054687],    [4.8909347, 52.3738007]],
+                    ];*/
+
+    console.log("------distance------");
+
+    var coordinateArray = [[4.8909347, 52.3738007], [51.124213, 10.195313], [47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]];
+    
+    var tourRoute = [];
+
+    for (i in coordinateArray) {
+        var coordinateA = coordinateArray[i];
+        var smallestDistance = Infinity;
+        var closestCoordinate = 0;
+
+        console.log("-------------------");
+        for (i in coordinateArray) {
+            var coordinateB = coordinateArray[i];
+
+            if (coordinateA != coordinateB) {
+                currentDistance = d3.geo.distance(coordinateA, coordinateArray[i]);
+
+                if (currentDistance < smallestDistance) {
+                    smallestDistance = currentDistance;
+                    closestCoordinate = coordinateB;
+                }
+            }
+        }
+
+        var coordinatePair = [coordinateA, coordinateB];
+        tourRoute.push(coordinatePair);
+
+        if (coordinatePair) {
+            console.log(tourRoute);
+        }
+    }
+
+    // Draw lines for route
+    for (var i in tourRoute) {
+        routeLines.push({ 
+            type: "LineString",
+            coordinates: tourRoute[i],
+            color: 'red'
+        });
+    }
+
+    d3.select('g.zoom')
+        .append('g')
+        .attr('class', 'routelines')
+        .selectAll("path .edge") 
+        .data(routeLines)
+        .enter()
+        .append("path")
+        .attr("class", "edge")
+        .attr("d", this.path)
+        .style('stroke', function(d) { return d.color; })
+        .attr("stroke-dasharray", function() { return this.getTotalLength() + " " + this.getTotalLength(); } )
+        .attr("stroke-dashoffset", function() { return this.getTotalLength(); } )
+        .transition()
+        .duration(1500)
+        .ease("linear")
+        .attr("stroke-dashoffset", 0)
+}
+
 Map.prototype.hideLines = function () {
     d3.selectAll('.lines .edge')
         .transition()

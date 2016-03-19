@@ -95,9 +95,37 @@
                         <button id="search-submit" class="btn btn-primary" type="button">Search</button>
                     </span>
                 </div>
+                <button id="plan-tour-button" onClick="controlTour()" class="btn plan-tour-button btn-warning btn-primary" type="button">Start tour</button>
             </form>
         </nav>
         <div id="search-results" class="list-group"></div>
+        <div id="tour-playlist" class="tour-playlist">
+            <h3>Suggested tour playlist</h3>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                    <tr>
+                        <td>Song Title</td>
+                        <td>Play</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 		<div class="map" id="map" style="margin-top: 50px;"></div>
         <div id="country-details" class="navbar navbar-default navbar-fixed-bottom" style="display: none;" >
             <div class="row">
@@ -113,5 +141,18 @@
                 <div class="col-md-6"><h1>Genres</h1></div>
             </div>
         </div>
+        <script>
+            function controlTour() {
+                var element = document.getElementById('plan-tour-button');
+                if (element.innerHTML === 'Start tour') {
+                    element.innerHTML = 'End tour';
+                    document.getElementById('tour-playlist').style.display = 'block';
+                }
+                else {
+                    element.innerHTML = 'Start tour';
+                    document.getElementById('tour-playlist').style.display = 'none';
+                }
+            }
+        </script>
 	</body>
 </html>
