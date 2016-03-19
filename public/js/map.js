@@ -1,19 +1,20 @@
 
 var Map = function (options) {
     this.data = [];
+    
     this.options = $.extend({
         width: 1152,
         height: 600,
-        domain: [0, 90],
+        domain: [0, 0],
         column: 'count',
         colors: colorbrewer.Reds[9],
-        //domain: [( Math.floor(minValue / 1000) * 1000), ( Math.ceil(maxValue / 1000) * 1000)],
         projection: d3.geo.naturalEarth,
         scale: 200,
         translate: [1152 / 2, 600 / 2],
         zoomFactor: 2,
         duration: 2000,
-        valueScale: d3.scale.quantize,
+        valueScale: d3.scale.threshold,
+        unitId: '_id',
         format: function(d) {
             d = d;
             return d3.format(',.00f')(d);
@@ -34,9 +35,6 @@ var Map = function (options) {
 
 Map.prototype.init = function (data) {
     this.topojson = data;
-    
-    var maxValue = Math.max.apply(Math, this.data.map(function(x){return x.count;})),
-        minValue = Math.min.apply(Math, this.data.map(function(x){return x.count;}));
     
     this.projection = this.options.projection()
         .scale(this.options.scale)
@@ -62,7 +60,7 @@ Map.prototype.init = function (data) {
         .legend(true, {transform: "translate(0,320)"})
         .postUpdate(this.options.onReady)
         .valueScale(this.options.valueScale)
-        .unitId('_id');
+        .unitId(this.options.unitId);
     
     d3.select('#map')
         .datum(this.data)
@@ -70,7 +68,57 @@ Map.prototype.init = function (data) {
 }
 
 Map.prototype.setData = function (data) {
+    var unitIds = data.map(function (d) { return d[this.options.unitId] }.bind(this));
+    for (var i = 0; i < this.data.length; i++) {
+        if (unitIds.indexOf(this.data[i][this.options.unitId]) == -1) {
+            this.data[i][this.options.column] = 0;
+            data.push(this.data[i]);
+        }
+    }
+    
     this.data = data;
+    
+    var values = this.data.map(function(d) { return d.count; });
+
+    // var min = d3.min(values);
+    // var max = d3.max(values);
+    // var median = d3.median(values);
+    var mean = d3.mean(values);
+    // var deviation = d3.deviation(values);
+    // var variance = d3.variance(values);
+    // var quarter = d3.quantile(values, 0.25);
+    // var thirdquarter = d3.quantile(values, 0.5);
+    
+    // console.log('min: ', min);
+    // console.log('max: ', max);
+    // console.log('median: ', median);
+    // console.log('mean: ', mean);
+    // console.log('deviation: ', deviation);
+    // console.log('variance: ', variance);
+    
+    var beforeMean = this.floor(mean / 4);
+    var afterMean =this.floor((max - mean) / 4);
+    
+    this.options.domain = [1*beforeMean, 2*beforeMean, 3*beforeMean, this.floor(mean), 1*afterMean, 2*afterMean, 3*afterMean, 4*afterMean];
+    this.map.domain(this.options.domain);
+}
+
+Map.prototype.floor = function (val) {
+    if (val < 10) {
+        return val;
+    } else if (val < 100) {
+        return Math.floor(val / 10) * 10;
+    } else if (val < 1000) {
+        return Math.floor(val / 100) * 100;
+    } else if (val < 10000) {
+        return Math.floor(val / 1000) * 1000;
+    } else if (val < 100000) {
+        return Math.floor(val / 10000) * 10000;
+    } else if (val < 1000000) {
+        return Math.floor(val / 100000) * 100000;
+    }
+    
+    return val;
 }
 
 Map.prototype.update = function (callback) {
