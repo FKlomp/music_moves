@@ -15,8 +15,8 @@ var yScale = d3.scale.ordinal();
 //add svg to songchart
 var chart = d3.select(".songchart").append("svg")
                             .attr("width",canvasWidth_songchart)
-                            .attr("height", canvasHeight_songchart);                       
-
+                            .attr("height", canvasHeight_songchart);
+                       
 //set up axis                            
 var xAxis = d3.svg.axis()
             .scale(xScale)
@@ -27,6 +27,20 @@ var yAxis = d3.svg.axis()
             .scale(yScale)
             .orient("left")
             .tickSize(0);
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Frequency:</strong> <span style='color:red'>" + "</span>";
+  })
+
+var div = d3.select("body")
+  .append("div")  // declare the tooltip div 
+  .attr("class", "tooltip")              // apply the 'tooltip' class
+  .style("opacity", 0);   
+
+chart.call(tip);
 
 //add in data
   d3.xhr("topsongs.csv").get(function (error, response) {
@@ -39,6 +53,7 @@ var yAxis = d3.svg.axis()
     var keys = d3.keys(data[0]);
     var namesTitle = keys[0];
     var valuesTitle = keys[1];
+    var videoID = keys[2];
 
     //accessing the properties of each object with the variable name through its key
     var values = function(d) {return +d[valuesTitle];};
@@ -69,10 +84,10 @@ var yAxis = d3.svg.axis()
                         .attr("width", function (d) {return xScale(d[valuesTitle])})
                         .attr("height", yScale.rangeBand())
                         .attr("fill", "#5eb9c9")
-
+                        
                         //add song title to bar
                         .attr("songtitle", function(d, i) {
-                          chart.append("text")
+                        chart.append("text")
                                 .attr("x", leftMargin + 6)
                                 .attr("y", parseFloat(d3.select(this).attr("y")) + (parseFloat(d3.select(this).attr("height")) / 2))
                                 .attr("dy", "0.35em")
@@ -81,19 +96,42 @@ var yAxis = d3.svg.axis()
                                 .attr("font-size", "14px")
                                 .attr("fill", "black")
                                 .text(d[namesTitle]);
-                        })
+                        
+                        
+                          })
 
-                        //change color of bar
                         .on("mouseover", function(d) {
-                          d3.select(this)
+                                d3.select(this)
                                 .attr("fill", "#83C8D4");
-                        })
+
+                                div.transition()
+                                  .duration(300)  
+                                  .style("opacity", .9);
+           
+                                div.html(
+                                  '<a href= "https://www.youtube.com/watch?v='
+                                  + d[videoID]
+                                  + '" target="_blank">Play '
+                                  + d[namesTitle]
+                                  + '</a>'
+                                  + '<br/>') 
+                                  .style("display", "block")       
+                                  .style("left", (d3.event.pageX) + "px")      
+                                  .style("top", (d3.event.pageY - 28) + "px")
+                                  })
+                      
                         .on("mouseout", function(d) {
                           d3.select(this)
                             .transition()
                             .duration(250)
                             .attr("fill", "#5eb9c9");
+                          div.transition()
+                            .duration(5000)
+                            .style("opacity", 0)
+                        
                         });
+                    
+                        
 
   //append x axis
   chart.append("g")
@@ -130,6 +168,7 @@ var yAxis = d3.svg.axis()
           .attr("font-size", "12px")
           .attr("fill", "black")
           .text(valuesTitle);
+
 });
 
 //while the data is being loaded it turns the strings into a number
