@@ -105,7 +105,6 @@ Map.prototype.drawLines = function () {
                     coordinates: [[4.8909347, 52.3738007], cleanPath.centroid(features[y])],
                     color: colorScale(count)
                 });
-
                 break;
             }
         }
@@ -127,6 +126,44 @@ Map.prototype.drawLines = function () {
         .duration(1500)
         .ease("linear")
         .attr("stroke-dashoffset", 0)
+}
+
+Map.prototype.drawDots = function(){
+
+    var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
+        cleanPath = d3.geo.path().projection(null),
+
+        dots = [];
+
+    for (var i = 0; i < this.data.length; i++) {
+        var id = this.data[i]._id,
+            count = this.data[i].count;
+    
+        for (var y = 0; y < features.length; y++) {
+            if ( features[y].id ==  id ){
+                dots.push(cleanPath.centroid(features[y]));
+                break;
+            }
+        }
+    }
+
+    var fiveDots = [[4.8909347, 52.3738007], [51.124213, 10.195313],[47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]]
+
+    //console.log(dots);
+    d3.select('g.zoom')
+        .append('g')
+        .attr('class', 'dots')
+        .selectAll("path .edge") 
+        .data(fiveDots).enter()
+        .append("circle")
+        .attr("cx", function (d) { 
+            console.log(d);
+            return map.projection(d)[0]; })
+        .attr("cy", function (d) { 
+            console.log(d);
+            return map.projection(d)[1]; })
+        .attr("r", "2px")
+        .attr("fill", "blue")
 }
 
 Map.prototype.hideLines = function () {

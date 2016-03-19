@@ -16,7 +16,7 @@
         <script src="js/map.js"></script>
         <script src="js/search_bar.js" type="text/javascript"></script>
         
-        <script>
+                <script>
             
             function start () {
                 var promise = new Promise(function(resolve, reject) {
@@ -35,7 +35,7 @@
                 map.drawLines();
                 setTimeout(map.update.bind(map), 1000)
                 setTimeout(map.hideLines.bind(map), 2000)
-                
+                map.drawDots();
             }
             
             $(document).ready(function () {
