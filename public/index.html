@@ -70,6 +70,7 @@
                         <button id="search-submit" class="btn btn-primary" type="button">Search</button>
                     </span>
                 </div>
+                <button id="plan-tour-button" onClick="controlTour()" class="btn plan-tour-button btn-warning btn-primary" type="button">Start tour</button>
             </form>
         </nav>
         <div id="search-results" class="list-group"></div>
@@ -105,5 +106,18 @@
                 </div>
             </div>
         </div>
+        <script>
+            function controlTour() {
+                var element = document.getElementById('plan-tour-button');
+                if (element.innerHTML === 'Start tour') {
+                    element.innerHTML = 'End tour';
+                    document.getElementById('tour-playlist').style.display = 'block';
+                }
+                else {
+                    element.innerHTML = 'Start tour';
+                    document.getElementById('tour-playlist').style.display = 'none';
+                }
+            }
+        </script>
 	</body>
 </html>
