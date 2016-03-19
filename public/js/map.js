@@ -170,34 +170,63 @@ Map.prototype.drawDotLines = function () {
 
     var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
         cleanPath = d3.geo.path().projection(null),
-        lines = [];
+        routeLines = [];
 
-    var tourRoute = [
+    /*var tourRoute = [
                         [[4.8909347, 52.3738007],   [51.124213, 10.195313]],
                         [[51.124213, 10.195313],    [47.040182, 1.757813]],
                         [[47.040182, 1.757813],     [52.908902, -8.789062]],
                         [[52.908902, -8.789062],    [53.330873, -1.054687]],
                         [[53.330873, -1.054687],    [4.8909347, 52.3738007]],
+                    ];*/
 
-                    ];
+    console.log("------distance------");
 
+    var coordinateArray = [[4.8909347, 52.3738007], [51.124213, 10.195313], [47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]];
+    
+    var tourRoute = [];
+
+    for (i in coordinateArray) {
+        var coordinateA = coordinateArray[i];
+        var smallestDistance = Infinity;
+        var closestCoordinate = 0;
+
+        console.log("-------------------");
+        for (i in coordinateArray) {
+            var coordinateB = coordinateArray[i];
+
+            if (coordinateA != coordinateB) {
+                currentDistance = d3.geo.distance(coordinateA, coordinateArray[i]);
+
+                if (currentDistance < smallestDistance) {
+                    smallestDistance = currentDistance;
+                    closestCoordinate = coordinateB;
+                }
+            }
+        }
+
+        var coordinatePair = [coordinateA, coordinateB];
+        tourRoute.push(coordinatePair);
+
+        if (coordinatePair) {
+            console.log(tourRoute);
+        }
+    }
+
+    // Draw lines for route
     for (var i in tourRoute) {
-        console.log("--------------ROUTE--------------");
-        console.log(tourRoute);
-
-        lines.push({ 
+        routeLines.push({ 
             type: "LineString",
             coordinates: tourRoute[i],
             color: 'red'
         });
-        console.log("gelukt");
     }
 
     d3.select('g.zoom')
         .append('g')
-        .attr('class', 'lines')
+        .attr('class', 'routelines')
         .selectAll("path .edge") 
-        .data(lines)
+        .data(routeLines)
         .enter()
         .append("path")
         .attr("class", "edge")
