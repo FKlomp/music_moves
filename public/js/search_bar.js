@@ -23,6 +23,11 @@ var SearchBar = function () {
         
     $('#search-results').on('click', '.list-group-item', this.selectItem.bind(this));
     
+    $('#search-form').submit(function (evt) {
+        this.submit()
+        evt.preventDefault();
+    }.bind(this));
+    
     $(document).on('click', '.filter-option', this.updateFilter.bind(this));
     
     this.buildDropDown();
@@ -61,7 +66,7 @@ SearchBar.prototype.selectItem = function (evt) {
         url = 'api/streamwatch/artist/country?mbId=' + id;
     }
     
-    if (type) {
+    if (url) {
         var promise = new Promise(function(resolve, reject) {
             d3.json(url, function(err, data) {
                 (err) ? reject(err) : resolve(data);

@@ -337,7 +337,9 @@ var Geomap = (function () {
                 return d.properties.name;
             },
             width: null,
-            zoomFactor: 8
+            zoomFactor: 8,
+            onZoomIn: function () {},
+            onZoomOut: function () {}
         };
 
         // Setup methods to access properties.
@@ -362,9 +364,15 @@ var Geomap = (function () {
                 var centroid = this.path.centroid(d);
                 x = centroid[0];
                 y = centroid[1];
+                y0 = y0 / 2;
                 k = this.properties.zoomFactor;
                 this._.centered = d;
-            } else this._.centered = null;
+                
+                this.properties.onZoomIn(d);
+            } else {
+                this._.centered = null
+                this.properties.onZoomOut(d);
+            };
 
             this.svg.selectAll('path.unit').classed('active', this._.centered && function (_) {
                 return _ === _this._.centered;
@@ -406,7 +414,7 @@ var Geomap = (function () {
             // Load and render geo data.
             d3.json(self.properties.geofile, function (error, geo) {
                 self.geo = geo;
-                self.svg.append('g').attr('class', 'units zoom').selectAll('path').data(topojson.feature(geo, geo.objects[self.properties.units]).features).enter().append('path').attr('data-toggle', "modal").attr('data-target','#Modal1').attr('class', function (d) {
+                self.svg.append('g').attr('class', 'units zoom').selectAll('path').data(topojson.feature(geo, geo.objects[self.properties.units]).features).enter().append('path').attr('class', function (d) {
                     return 'unit ' + self.properties.unitPrefix + '' + d.id;
                 }).attr('d', self.path).on('click', self.clicked.bind(self)).append('title').text(self.properties.unitTitle);
                 self.update();
@@ -476,7 +484,9 @@ var Choropleth = (function (_Geomap) {
             var self = this;
             self.extent = d3.extent(self.data, self.columnVal.bind(self));
             self.colorScale = self.properties.valueScale().domain(self.properties.domain || self.extent).range(self.properties.colors);
-
+            
+            if (self.properties.legend) self.drawLegend(self.properties.legend);
+            
             // Remove fill styles that may have been set previously.
             self.svg.selectAll('path.unit').style('fill', null);
 
@@ -500,8 +510,6 @@ var Choropleth = (function (_Geomap) {
                     unit.select('title').text('' + text + '\n\n' + self.properties.column + ': ' + val);
                 }
             });
-
-            if (self.properties.legend) self.drawLegend(self.properties.legend);
 
             // Make sure postUpdate function is run if set.
             _get(Object.getPrototypeOf(Choropleth.prototype), 'update', this).call(this);
@@ -538,7 +546,7 @@ var Choropleth = (function (_Geomap) {
             var wRect = wBox / (wFactor * 0.75),
                 hLegend = hBox - hBox / (hFactor * 1.8),
                 offsetText = wRect / 2,
-                offsetY = self.properties.height - hBox,
+                offsetY = self.properties.height - hBox - 50,
                 tr = 'translate(' + offsetText + ',' + offsetText * 3 + ')';
 
             // Remove possibly existing legend, before drawing.

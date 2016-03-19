@@ -108,6 +108,45 @@ var Server = {
         
         app.get('/api/echonest', echonestMiddleware(config.ECHONEST_API_KEY))
         
+        app.get('/api/streamwatch/country/topsongs', function (req, res) {
+            var match = {},
+                aggregate = [{
+                    $group: { 
+                        _id: "$artists.mbId", 
+                        count: { $sum: "$count" }, 
+                        artist: { $first: "$artists" }, 
+                        song: { $first: "$song" } }
+                },{
+                    $sort: { count: -1 }
+                },{
+                    $limit: 5
+                }];
+            
+            if (this.online) {
+                match['artists.mbId'] = { $in: this.artistIds };
+            }
+                            
+            if (req.query.q) {
+                match.country = req.query.q;
+            }
+            
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+            
+            this.mongoDB.collection('song_stats_geo', function(err, collection) {
+                if(err) res.send(err);
+                
+                collection.aggregate(aggregate).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
+        }.bind(this));
+        
         app.get('/api/streamwatch/artist/country', function (req, res) {
             var match = {},
                 aggregate = [{

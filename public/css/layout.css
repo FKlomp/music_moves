@@ -9,6 +9,10 @@ body {
     font-family: arial;
 }
 
+h1 {
+    padding: 10px 20px;
+}
+
 #loader {
     position: absolute;
     top: 0;
@@ -17,6 +21,10 @@ body {
     height: 100%;
     background-color: rgba(0,0,0,0.9);
     z-index: 1040;
+}
+
+#country-details {
+    height: 50%;
 }
 
 .edge {

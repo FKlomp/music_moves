@@ -19,6 +19,8 @@ var Map = function (options) {
             d = d;
             return d3.format(',.00f')(d);
         },
+        onZoomIn: function (d) { console.log('in', d) },
+        onZoomOut: function (d) { console.log('out', d) },
         onReady: function () { console.log('onReady') }
     }, options);
     
@@ -57,8 +59,10 @@ Map.prototype.init = function (data) {
         .domain(this.options.domain)
         .format(this.options.format)
         .duration(this.options.duration)
-        .legend(true, {transform: "translate(0,320)"})
+        .legend(false)
         .postUpdate(this.options.onReady)
+        .onZoomIn(this.options.onZoomIn)
+        .onZoomOut(this.options.onZoomOut)
         .valueScale(this.options.valueScale)
         .unitId(this.options.unitId);
     
@@ -81,7 +85,7 @@ Map.prototype.setData = function (data) {
     var values = this.data.map(function(d) { return d.count; });
 
     // var min = d3.min(values);
-    // var max = d3.max(values);
+    var max = d3.max(values);
     // var median = d3.median(values);
     var mean = d3.mean(values);
     // var deviation = d3.deviation(values);
@@ -133,6 +137,7 @@ Map.prototype.update = function (callback) {
     
     this.map.data = d3.select('#map').datum();
     
+    this.map.legend(true);
     this.map.update();
 }
 
