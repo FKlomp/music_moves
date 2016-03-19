@@ -162,8 +162,53 @@ Map.prototype.drawDots = function(){
         .attr("cy", function (d) { 
             console.log(d);
             return map.projection(d)[1]; })
-        .attr("r", "2px")
+        .attr("r", "8px")
         .attr("fill", "blue")
+}
+
+Map.prototype.drawDotLines = function () {
+
+    var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
+        cleanPath = d3.geo.path().projection(null),
+        lines = [];
+
+    var tourRoute = [
+                        [[4.8909347, 52.3738007],   [51.124213, 10.195313]],
+                        [[51.124213, 10.195313],    [47.040182, 1.757813]],
+                        [[47.040182, 1.757813],     [52.908902, -8.789062]],
+                        [[52.908902, -8.789062],    [53.330873, -1.054687]],
+                        [[53.330873, -1.054687],    [4.8909347, 52.3738007]],
+
+                    ];
+
+    for (var i in tourRoute) {
+        console.log("--------------ROUTE--------------");
+        console.log(tourRoute);
+
+        lines.push({ 
+            type: "LineString",
+            coordinates: tourRoute[i],
+            color: 'red'
+        });
+        console.log("gelukt");
+    }
+
+    d3.select('g.zoom')
+        .append('g')
+        .attr('class', 'lines')
+        .selectAll("path .edge") 
+        .data(lines)
+        .enter()
+        .append("path")
+        .attr("class", "edge")
+        .attr("d", this.path)
+        .style('stroke', function(d) { return d.color; })
+        .attr("stroke-dasharray", function() { return this.getTotalLength() + " " + this.getTotalLength(); } )
+        .attr("stroke-dashoffset", function() { return this.getTotalLength(); } )
+        .transition()
+        .duration(1500)
+        .ease("linear")
+        .attr("stroke-dashoffset", 0)
 }
 
 Map.prototype.hideLines = function () {
