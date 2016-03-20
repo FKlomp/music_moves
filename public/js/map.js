@@ -249,3 +249,18 @@ Map.prototype.hideLines = function () {
         .attr("stroke-dashoffset", function() { return -this.getTotalLength(); } )
 }
 
+Map.prototype.hideTour = function () {
+    d3.selectAll('.routelines .edge')
+        .transition()
+        .duration(500)
+        .ease("linear")
+        .style('opacity', 0)
+        .attr("stroke-dashoffset", function() { return -this.getTotalLength(); } )
+
+    d3.selectAll('.dots')
+        .transition()
+        .duration(500)
+        .ease("linear")
+        .style('opacity', 0)
+}
+
