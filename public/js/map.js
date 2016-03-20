@@ -73,6 +73,7 @@ Map.prototype.setData = function (data) {
     this.data = data;
 }
 
+
 Map.prototype.update = function (callback) {
     d3.select('#map')
         .datum(this.data)
@@ -84,7 +85,6 @@ Map.prototype.update = function (callback) {
     }
     
     this.map.data = d3.select('#map').datum();
-    
     this.map.update();
 }
 

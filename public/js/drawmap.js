@@ -6,6 +6,20 @@ var format = function(d) {
 var width = 1152,
     height = 600;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var domainArray = [1, 100];
     
 var map = d3.geomap.choropleth()

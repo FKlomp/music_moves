@@ -57,8 +57,10 @@ SearchBar.prototype.selectItem = function (evt) {
         
     if (this.options.selectedQueryType === this.searchTypes.SONG) {
         url = 'api/streamwatch/song/country?song=' + encodeURI(id);
+        activeSong = encodeURI(id);
     } else {
-        url = 'api/streamwatch/artist/country?mbId=' + id;
+        url = 'api/streamwatch/artist/country?mbId=' + id ;
+        activeArtist = id;
     }
     
     if (type) {
@@ -67,6 +69,8 @@ SearchBar.prototype.selectItem = function (evt) {
                 (err) ? reject(err) : resolve(data);
             });
         }).then(function (data) {
+
+
             map.setData(data);
             
             hideLoader();

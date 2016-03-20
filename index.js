@@ -126,7 +126,7 @@ var Server = {
                 });
             }
             
-            this.mongoDB.collection('artist_stats_geo', function(err, collection) {
+            this.mongoDB.collection('artist_stats_geo_monthly', function(err, collection) {
                 if(err) res.send(err);
                 
                 collection.aggregate(aggregate).toArray(function(err, docs) {
@@ -171,9 +171,6 @@ var Server = {
             
             if (req.query.q) query['lastfm_info.artist.name'] = new RegExp(req.query.q, 'i');
             
-            if (this.online) {
-                query.mbId = { $in: this.artistIds };
-            }
             
             this.mongoDB.collection('artist_info', function(err, collection) {
                 collection.find(query).limit(20).toArray(function(err, docs) {
@@ -191,12 +188,58 @@ var Server = {
             if (this.online) {
                 query.artistMbId = { $in: this.artistIds };
             }
-            
             this.mongoDB.collection('song_info', function(err, collection) {
                 collection.find(query).limit(20).toArray(function(err, docs) {
                     res.json(docs);
                 });
             });
+        }.bind(this));
+
+
+
+
+
+        app.get('/api/streamwatch/dates/country', function (req, res) {
+            var time = new Date(req.query.timeline)
+            var match = {},
+            aggregate = [{   
+                $match : { 
+                      date : time
+                   } },
+                {   
+                    $group: { _id : "$country", count: { $sum: "$count" }}
+                }];            
+            if (req.query.mbId) {
+                match.mbId = req.query.mbId;
+            } else if (this.online) {
+                match.mbId = { $in: this.artistIds };
+            }
+
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+
+            aggregate[0]["$match"].date = aggregate[1]["$match"].date;
+            aggregate[1] = aggregate[2];
+            aggregate.pop();
+
+            if (req.query.mbId) {
+                aggregate[0]["$match"].mbId = req.query.mbId;
+            }
+
+            //TODO: SONG
+
+            this.mongoDB.collection('artist_stats_geo_monthly', function(err, collection) {
+                if(err) res.send(err);
+                
+                collection.aggregate(aggregate).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
         }.bind(this));
         
         app.listen(3000, function () {
