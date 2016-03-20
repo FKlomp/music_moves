@@ -168,7 +168,6 @@ Map.prototype.drawDots = function(){
 }
 
 Map.prototype.drawDotLines = function () {
-
     var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
         cleanPath = d3.geo.path().projection(null),
         routeLines = [];
