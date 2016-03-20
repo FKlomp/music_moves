@@ -149,7 +149,6 @@ Map.prototype.drawDots = function(){
 
     var fiveDots = [[4.8909347, 52.3738007], [51.124213, 10.195313],[47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]]
 
-    //console.log(dots);
     d3.select('g.zoom')
         .append('g')
         .attr('class', 'dots')
@@ -157,10 +156,8 @@ Map.prototype.drawDots = function(){
         .data(fiveDots).enter()
         .append("circle")
         .attr("cx", function (d) { 
-            console.log(d);
             return map.projection(d)[0]; })
         .attr("cy", function (d) { 
-            console.log(d);
             return map.projection(d)[1]; })
         .attr("r", "7px")
         .attr("fill", "white")
