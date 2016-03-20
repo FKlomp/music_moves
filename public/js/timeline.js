@@ -17,6 +17,8 @@ function TimeSlider(){
         }
         else {
             slider.disable();
+
+            uncheckBox();
         }
     });
 
@@ -44,5 +46,18 @@ function changeTime(timedata) {
 
 
 
+    });
+}
+
+function uncheckBox()
+{
+    var promise = new Promise(function(resolve, reject) {
+        d3.json('api/streamwatch/artist/country', function(err, data) {
+            (err) ? reject(err) : resolve(data);
+        });
+    })
+    .then(function (data) {
+        map.setData(data);
+        map.update();
     });
 }
