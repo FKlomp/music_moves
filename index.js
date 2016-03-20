@@ -9,7 +9,7 @@ var nedb = require('nedb'),
     app = express();
 
 var Server = {
-    online: true,
+    online: false,
     mongoDB: null,
     localDB: {},
     artistIds: [],
@@ -108,14 +108,108 @@ var Server = {
         
         app.get('/api/echonest', echonestMiddleware(config.ECHONEST_API_KEY))
         
-        app.get('/api/streamwatch/country/topsongs', function (req, res) {
+        app.get('/api/streamwatch/country/toptags', function (req, res) {
+            var match = {},
+                aggregate = [{
+                    $lookup: {
+                        from: 'artist_info',
+                        localField: 'mbId',
+                        foreignField: 'mbId',
+                        as: 'artist_info' }
+                },{ 
+                    $project : {tags: "$artist_info.lastfm_info.artist.tags.tag"}
+                },{ 
+                    $unwind : "$tags"
+                },{ 
+                    $unwind : "$tags"
+                },{
+                    $group: { 
+                        _id: "$tags.name",
+                        count: { $sum: 1 }
+                    }
+                },{
+                    $sort: { count: -1 }
+                },{
+                    $limit: 15
+                }];
+            
+            if (this.online) {
+                match.mbId = { $in: this.artistIds };
+            }
+                            
+            if (req.query.q) {
+                match.country = req.query.q;
+            }
+            
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+            
+            this.mongoDB.collection('artist_stats_geo', function(err, collection) {
+                if(err) res.send(err);
+                
+                collection.aggregate(aggregate).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
+        }.bind(this));
+        
+        app.get('/api/streamwatch/country/topartists', function (req, res) {
             var match = {},
                 aggregate = [{
                     $group: { 
-                        _id: "$artists.mbId", 
-                        count: { $sum: "$count" }, 
-                        artist: { $first: "$artists" }, 
-                        song: { $first: "$song" } }
+                        _id: "$mbId", 
+                        count: { $sum: "$count" } }
+                },{
+                    $lookup: {
+                        from: 'artist_info',
+                        localField: '_id',
+                        foreignField: 'mbId',
+                        as: 'artist_info' }
+                },{
+                    $sort: { count: -1 }
+                },{
+                    $limit: 5
+                }];
+            
+            if (this.online) {
+                match.mbId = { $in: this.artistIds };
+            }
+                            
+            if (req.query.q) {
+                match.country = req.query.q;
+            }
+            
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+            
+            this.mongoDB.collection('artist_stats_geo', function(err, collection) {
+                if(err) res.send(err);
+                
+                collection.aggregate(aggregate).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
+        }.bind(this));
+        
+        app.get('/api/streamwatch/country/topsongs', function (req, res) {
+            var match = {},
+                aggregate = [{
+                    $unwind: "$artists"
+                },{ 
+                    $group: {
+                        _id: { song: "$song", mbId: "$artists[0].mbId" },
+                        artist: { $first: "$artists" },
+                        count: { $sum: "$count" } }
                 },{
                     $sort: { count: -1 }
                 },{

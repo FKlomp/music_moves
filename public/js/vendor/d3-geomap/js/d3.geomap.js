@@ -368,9 +368,25 @@ var Geomap = (function () {
                 k = this.properties.zoomFactor;
                 this._.centered = d;
                 
+                this.svg.selectAll('g.zoom .country_label')
+                    .remove();
+                
+                this.svg.select('g.zoom')
+                    .append('text')
+                    .attr('class', 'country_label')
+                    .attr('x', x)
+                    .attr('y', y)
+                    .attr("text-anchor", "middle")
+                    .style('fill', '#5eb9c9')
+                    .text(d.properties.name.toUpperCase());
+                
                 this.properties.onZoomIn(d);
             } else {
                 this._.centered = null
+                
+                this.svg.selectAll('g.zoom .country_label')
+                    .remove();
+                
                 this.properties.onZoomOut(d);
             };
 

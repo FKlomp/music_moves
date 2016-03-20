@@ -45,8 +45,38 @@ SearchBar.prototype.buildDropDown = function () {
 }
 
 SearchBar.prototype.updateFilter = function (evt) {
+    var url;
+    
     this.options.selectedQueryType = parseInt(evt.target.id.split('-')[1]);
     $('#filter-button').html(this.options.queryTypes[this.options.selectedQueryType].name + ' <span class="caret"></span>');
+    
+    showLoader();
+    
+    if (this.options.selectedQueryType === this.searchTypes.SONG) {
+        url = 'api/streamwatch/song/country';
+    } else {
+        url = 'api/streamwatch/artist/country';
+    }
+    
+    console.log(url);
+    var promise = new Promise(function(resolve, reject) {
+        d3.json(url, function(err, data) {
+            (err) ? reject(err) : resolve(data);
+        });
+    }).then(function (data) {
+        map.reset();
+        
+        setTimeout(function () {
+            map.setData(data);
+        
+            hideLoader();
+        
+            map.drawLines();
+        }, 1000)
+        
+        setTimeout(map.update.bind(map), 1000)
+        setTimeout(map.hideLines.bind(map), 2000)
+    });
     
     this.buildDropDown();
 }

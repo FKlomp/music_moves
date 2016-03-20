@@ -1,9 +1,16 @@
 var SongChart = function () {
     this.options = {
-        x: 20,
-        y: 10,
-        width: 400,
-        height: 300
+        x: 50,
+        y: 20,
+        width: 350,
+        height: 300,
+        column: 'count',
+        unit: function(d) {
+            return d._id.song;
+        },
+        format: function (d) {
+            return d.artist.name + " - " + d._id.song;
+        }
     }
     
     this.xScale = d3.scale.linear().range([0, this.options.width]);
@@ -39,8 +46,8 @@ var SongChart = function () {
 }
 
 SongChart.prototype.setData = function (data) {
-    var values = data.map(function (d) { return d.count; }),
-        names = data.map(function (d) { return d.song; }),
+    var values = data.map(function (d) { return d[this.options.column]; }.bind(this)),
+        names = data.map(this.options.unit),
         max = d3.max(values);
         
     this.data = data;
@@ -63,12 +70,12 @@ SongChart.prototype.setData = function (data) {
     
     this.rects = this.chart.selectAll("rect")
         .data(this.data)
-        .attr("width", function (d) { return this.xScale(d.count); }.bind(this))
+        .attr("width", function (d) { return this.xScale(d[this.options.column]); }.bind(this))
         .enter()
         .append("rect")
         .attr("x", this.options.x)
-        .attr("y", function (d) { return this.options.y + this.yScale(d.song); }.bind(this))
-        .attr("width", function (d) { return this.xScale(d.count); }.bind(this))
+        .attr("y", function (d) { return this.options.y + this.yScale(this.options.unit(d)); }.bind(this))
+        .attr("width", function (d) { return this.xScale(d[this.options.column]); }.bind(this))
         .attr("height", this.yScale.rangeBand())
         .attr("fill", "#5eb9c9")
         .on("mouseover", function(d) {
@@ -82,29 +89,15 @@ SongChart.prototype.setData = function (data) {
                 .attr("fill", "#5eb9c9");
         })
             
-    this.titles = this.chart.selectAll(".song_title")
+    this.titles = this.chart.selectAll(".bar_title")
         .data(this.data)
-        .text(function (d) { return d.artist[0].name + " - " + d.song} )
+        .text(this.options.format)
         .enter()
         .append("text")
-        .attr("class", "song_title")
+        .attr("class", "bar_title")
         .attr("x", this.options.x + 5)
-        .attr("y", function (d) { return this.options.y + this.yScale(d.song) + 20; }.bind(this))
+        .attr("y", function (d) { return this.options.y + this.yScale(this.options.unit(d)) + 20; }.bind(this))
         .attr("width", this.options.width)
         .attr("height", this.yScale.rangeBand())
-        .text(function (d) { return d.artist[0].name + " - " + d.song} );
-    
-    /*this.chart.append("text")
-        .attr("dy", "8")
-        //.attr("x", (maxBarWidth / 2) + leftMargin)
-        //.attr("y", canvasHeight_songchart - (otherMargins / 3))
-        .attr("text-anchor", "middle")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "12px")
-        .attr("fill", "black")
-        .text(function (d) { return d.count; } );*/
-}
-
-SongChart.prototype.update = function () {
-
+        .text(this.options.format);
 }

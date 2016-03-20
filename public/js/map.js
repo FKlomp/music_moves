@@ -11,7 +11,7 @@ var Map = function (options) {
         projection: d3.geo.naturalEarth,
         scale: 200,
         translate: [1152 / 2, 600 / 2],
-        zoomFactor: 2,
+        zoomFactor: 3,
         duration: 2000,
         valueScale: d3.scale.threshold,
         unitId: '_id',
@@ -125,6 +125,14 @@ Map.prototype.floor = function (val) {
     return val;
 }
 
+Map.prototype.reset = function () {
+    this.data = [];
+    
+    $('#map').empty();
+    
+    this.init(this.topojson);
+}
+
 Map.prototype.update = function (callback) {
     d3.select('#map')
         .datum(this.data)
@@ -203,7 +211,6 @@ Map.prototype.drawDots = function(){
 
     var fiveDots = [[4.8909347, 52.3738007], [51.124213, 10.195313],[47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]]
 
-    //console.log(dots);
     d3.select('g.zoom')
         .append('g')
         .attr('class', 'dots')
@@ -211,59 +218,63 @@ Map.prototype.drawDots = function(){
         .data(fiveDots).enter()
         .append("circle")
         .attr("cx", function (d) { 
-            console.log(d);
             return map.projection(d)[0]; })
         .attr("cy", function (d) { 
-            console.log(d);
             return map.projection(d)[1]; })
-        .attr("r", "8px")
-        .attr("fill", "blue")
+        .attr("r", "7px")
+        .attr("fill", "white")
+        .attr("stroke","#00F5F1")
+        .style("stroke-width", "2")
 }
 
 Map.prototype.drawDotLines = function () {
-
     var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
         cleanPath = d3.geo.path().projection(null),
         routeLines = [];
-
-    /*var tourRoute = [
-                        [[4.8909347, 52.3738007],   [51.124213, 10.195313]],
-                        [[51.124213, 10.195313],    [47.040182, 1.757813]],
-                        [[47.040182, 1.757813],     [52.908902, -8.789062]],
-                        [[52.908902, -8.789062],    [53.330873, -1.054687]],
-                        [[53.330873, -1.054687],    [4.8909347, 52.3738007]],
-                    ];*/
-
-    console.log("------distance------");
-
-    var coordinateArray = [[4.8909347, 52.3738007], [51.124213, 10.195313], [47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]];
-    
     var tourRoute = [];
+    var coordinateArray =  [[51.124213, 10.195313], [47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]];
+    var coordinateAmsterdam = [4.8909347, 52.3738007];
+    var startCoordinate;
+    var placesAddedToTour = [];
 
-    for (i in coordinateArray) {
-        var coordinateA = coordinateArray[i];
-        var smallestDistance = Infinity;
-        var closestCoordinate = 0;
+    while(placesAddedToTour.length < 4) {
 
-        console.log("-------------------");
-        for (i in coordinateArray) {
-            var coordinateB = coordinateArray[i];
+        if (placesAddedToTour.length < 4) {
+            var coordinateA = startCoordinate;
+            var smallestDistance = Infinity;
+            var closestCoordinate;
 
-            if (coordinateA != coordinateB) {
-                currentDistance = d3.geo.distance(coordinateA, coordinateArray[i]);
+            // Route always starts in Amsterdam
+            if (placesAddedToTour.length === 0) {
+                var coordinateA = coordinateAmsterdam;
+            }            
 
-                if (currentDistance < smallestDistance) {
-                    smallestDistance = currentDistance;
-                    closestCoordinate = coordinateB;
+            for (i in coordinateArray) {
+                var coordinateB = coordinateArray[i];
+
+                if (placesAddedToTour.indexOf(coordinateB) == -1) {
+                    var currentDistance = d3.geo.distance(coordinateA, coordinateB);
+
+                    if (currentDistance < smallestDistance) {
+                        smallestDistance = currentDistance;
+                        closestCoordinate = coordinateB;
+                    }
                 }
             }
+            // Add route to tourRoute, remember place added to tourRoute
+            tourRoute.push([coordinateA, closestCoordinate]);
+            placesAddedToTour.push(closestCoordinate);
+            startCoordinate = closestCoordinate;
         }
 
-        var coordinatePair = [coordinateA, coordinateB];
-        tourRoute.push(coordinatePair);
-
-        if (coordinatePair) {
-            console.log(tourRoute);
+        // Route always ends in Amsterdam
+        if (placesAddedToTour.length === 4) {
+            for (i in coordinateArray) {
+                if (placesAddedToTour.indexOf(coordinateArray[i]) == -1) {
+                    var closestCoordinate = coordinateArray[i];
+                }
+            }
+            tourRoute.push([closestCoordinate, coordinateAmsterdam]);
         }
     }
 
@@ -272,7 +283,7 @@ Map.prototype.drawDotLines = function () {
         routeLines.push({ 
             type: "LineString",
             coordinates: tourRoute[i],
-            color: 'red'
+            color: 'orange'
         });
     }
 
@@ -285,13 +296,9 @@ Map.prototype.drawDotLines = function () {
         .append("path")
         .attr("class", "edge")
         .attr("d", this.path)
-        .style('stroke', function(d) { return d.color; })
-        .attr("stroke-dasharray", function() { return this.getTotalLength() + " " + this.getTotalLength(); } )
-        .attr("stroke-dashoffset", function() { return this.getTotalLength(); } )
-        .transition()
-        .duration(1500)
-        .ease("linear")
-        .attr("stroke-dashoffset", 0)
+        .style('stroke', '#00F5F1')
+        .style("stroke-dasharray", ("3, 3"))
+        .style("stroke-width", "2")
 }
 
 Map.prototype.hideLines = function () {
@@ -301,5 +308,20 @@ Map.prototype.hideLines = function () {
         .ease("linear")
         .style('opacity', 0)
         .attr("stroke-dashoffset", function() { return -this.getTotalLength(); } )
+}
+
+Map.prototype.hideTour = function () {
+    d3.selectAll('.routelines .edge')
+        .transition()
+        .duration(500)
+        .ease("linear")
+        .style('opacity', 0)
+        .attr("stroke-dashoffset", function() { return -this.getTotalLength(); } )
+
+    d3.selectAll('.dots')
+        .transition()
+        .duration(500)
+        .ease("linear")
+        .style('opacity', 0)
 }
 
