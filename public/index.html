@@ -49,13 +49,13 @@
                     songChart.setData(data);
                 });
                 
-                var promise = new Promise(function(resolve, reject) {
+                /*var promise = new Promise(function(resolve, reject) {
                     d3.json('api/streamwatch/country/toptags?q=' + d.id, function(err, data) {
                         (err) ? reject(err) : resolve(data);
                     });
                 }).then(function (data) {
                     tagChart.setData(data);
-                });
+                });*/
                 
                 $('#country-details').slideDown(400);
             }
