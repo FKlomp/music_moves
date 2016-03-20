@@ -162,9 +162,10 @@ Map.prototype.drawDots = function(){
         .attr("cy", function (d) { 
             console.log(d);
             return map.projection(d)[1]; })
-        .attr("r", "8px")
+        .attr("r", "7px")
         .attr("fill", "white")
-        .attr("stroke","grey")
+        .attr("stroke","#00F5F1")
+        .style("stroke-width", "2")
 }
 
 Map.prototype.drawDotLines = function () {
@@ -223,7 +224,7 @@ Map.prototype.drawDotLines = function () {
         routeLines.push({ 
             type: "LineString",
             coordinates: tourRoute[i],
-            color: 'black'
+            color: 'orange'
         });
     }
 
@@ -236,8 +237,9 @@ Map.prototype.drawDotLines = function () {
         .append("path")
         .attr("class", "edge")
         .attr("d", this.path)
-        .style('stroke', 'black')
+        .style('stroke', '#00F5F1')
         .style("stroke-dasharray", ("3, 3"))
+        .style("stroke-width", "2")
 }
 
 Map.prototype.hideLines = function () {
