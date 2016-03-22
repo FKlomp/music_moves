@@ -190,12 +190,13 @@ Map.prototype.drawLines = function () {
         .attr("stroke-dashoffset", 0)
 }
 
-Map.prototype.drawDots = function(){
+Map.prototype.drawDots = function(tourcoordinates){
 
     var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
         cleanPath = d3.geo.path().projection(null),
 
         dots = [];
+    var coordinateAmsterdam = [4.8909347, 52.3738007];
 
     for (var i = 0; i < this.data.length; i++) {
         var id = this.data[i]._id,
@@ -208,8 +209,10 @@ Map.prototype.drawDots = function(){
             }
         }
     }
+    var fiveDots = tourcoordinates;
+    fiveDots.push(coordinateAmsterdam);
 
-    var fiveDots = [[4.8909347, 52.3738007], [51.124213, 10.195313],[47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]]
+
 
     d3.select('g.zoom')
         .append('g')
@@ -227,19 +230,20 @@ Map.prototype.drawDots = function(){
         .style("stroke-width", "2")
 }
 
-Map.prototype.drawDotLines = function () {
+Map.prototype.drawDotLines = function (tourcoordinates) {
     var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
         cleanPath = d3.geo.path().projection(null),
         routeLines = [];
     var tourRoute = [];
-    var coordinateArray =  [[51.124213, 10.195313], [47.040182, 1.757813], [52.908902, -8.789062], [53.330873, -1.054687]];
+
+    coordinateArray = tourcoordinates;
     var coordinateAmsterdam = [4.8909347, 52.3738007];
     var startCoordinate;
     var placesAddedToTour = [];
 
-    while(placesAddedToTour.length < 4) {
+    while(placesAddedToTour.length < coordinateArray.length) {
 
-        if (placesAddedToTour.length < 4) {
+        if (placesAddedToTour.length < coordinateArray.length) {
             var coordinateA = startCoordinate;
             var smallestDistance = Infinity;
             var closestCoordinate;
@@ -299,6 +303,69 @@ Map.prototype.drawDotLines = function () {
         .style('stroke', '#00F5F1')
         .style("stroke-dasharray", ("3, 3"))
         .style("stroke-width", "2")
+}
+
+Map.prototype.drawTour = function () {
+    var features = topojson.feature(this.topojson, this.topojson.objects.units).features,
+        cleanPath = d3.geo.path().projection(null);
+
+    //fill coordinateArray with tour countries
+    //[ "AS", "EU", "AF", "NA", "SA", "OC", "AN" ]
+    //gets it from continentSelected which is the dropdown selector
+    var coordinateArray =  []
+
+    //return top 5 countries with proper continent and artist
+
+    if(searchBar.currentArtist !== null){
+        url = 'api/streamwatch/tour/country?continent=' + continentSelected + '&mbId=' + searchBar.currentArtist;
+    }else {
+        url = 'api/streamwatch/tour/country?continent=' + continentSelected;
+    }
+
+    var promise = new Promise(function(resolve, reject) {
+        d3.json(url, function(err, data) {
+            (err) ? reject(err) : resolve(data);
+        });
+    }).then(function (data) {
+        var tourSize = 5;
+        var dots = [];
+
+        for (var i = 0; i < data.length; i++) {
+            var id = data[i]._id,
+                count = data[i].count;
+        
+            for (var y = 0; y < features.length; y++) {
+                if ( features[y].id ==  id && id != 'NL'){
+
+                    console.log(id);
+                    dots.push(cleanPath.centroid(features[y]));
+                    break;
+                }
+            }
+        }
+        //console.log(dots);
+        if(dots.length > tourSize) {
+            coordinateArray = dots.slice(0,5);
+        }else{
+            coordinateArray = dots;
+        }
+
+            console.log(coordinateArray)
+
+        //coordinateArray.push(cleanPath.centroid(features[0]), cleanPath.centroid(features[23]), [52.908902, -8.789062], [53.330873, -1.054687]);
+
+        //draw tour lines and dots
+        map.drawDotLines(coordinateArray);
+        map.drawDots(coordinateArray);
+
+    });
+
+
+
+
+
+
+
 }
 
 Map.prototype.hideLines = function () {

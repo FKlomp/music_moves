@@ -363,6 +363,46 @@ var Server = {
                 });
             }.bind(this));
         }.bind(this));
+
+
+        app.get('/api/streamwatch/tour/country', function (req, res) {
+            var continent = req.query.continent.split(","),
+                match = {},
+                aggregate = [{   
+                    $group: { _id : "$country", count: { $sum: "$count" }}
+                },
+                { $sort : { count : -1} }];
+
+            if (continent[0] === '') {
+                var continents = "AS EU AF NA SA OC AN";
+                continent = continents.split(" ");
+            }
+            
+            match.continent = { $in: continent};
+
+            if (req.query.mbId) {
+                match.mbId = req.query.mbId;
+            } else if (this.online) {
+                match.mbId = { $in: this.artistIds };
+            }
+
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+            //TODO: SONG
+
+            this.mongoDB.collection('artist_stats_geo_monthly', function(err, collection) {
+                if(err) res.send(err);
+                
+                collection.aggregate(aggregate).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
+        }.bind(this));
         
         app.listen(3000, function () {
             console.log('App listening on port 3000!');

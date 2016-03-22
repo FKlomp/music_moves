@@ -8,6 +8,7 @@
 		<link href="js/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<link href="js/vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap-slider.css" rel="stylesheet">
+        <link href="css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
         <link href="css/main.css" rel="stylesheet" type="text/css">
         
         <script src="js/vendor/jquery-2.2.1.min.js" type="text/javascript"></script>
@@ -22,7 +23,12 @@
         <script src="js/tag_chart.js" type="text/javascript"></script>
         <script src="js/timeline.js" type="text/javascript"></script>
         <script src="js/bootstrap-slider.js" type="text/javascript"></script>
+        <script src="js/bootstrap-multiselect.js" type="text/javascript" ></script>
+
         <script>
+            var continentSelected = [];
+
+
             function start () {
                 var promise = new Promise(function(resolve, reject) {
                     d3.json('api/streamwatch/artist/country', function(err, data) {
@@ -67,6 +73,24 @@
             }
             
             $(document).ready(function () {
+                
+                //continent selection
+                $('#continents-selector').multiselect({
+                    onChange: function(element, checked) {
+                        if (checked === true) {
+                            continentSelected.push(element.val());
+
+                        }
+                        else if (checked === false) {
+                            var index = continentSelected.indexOf(element.val());
+                            if (index > -1) {
+                                continentSelected.splice(index, 1);
+                            }
+                        }
+                    }
+                });
+
+
                 window.showLoader = function () {
                     $('#loader').show();
                 }
@@ -106,6 +130,17 @@
                     <span class="input-group-btn">
                         <button id="search-submit" class="btn btn-primary" type="button">Search</button>
                     </span>
+                </div>
+                <div> 
+                    <select id="continents-selector" multiple="multiple">
+                        <option value="AS">AS</option>
+                        <option value="EU">EU</option>
+                        <option value="AF">AF</option>
+                        <option value="NA">NA</option>
+                        <option value="SA">SA</option>
+                        <option value="OC">OC</option>
+                        <option value="AN">AN</option>
+                    </select>
                 </div>
                 <button id="plan-tour-button" onClick="controlTour()" class="btn plan-tour-button btn-warning btn-primary" type="button">Start tour</button>
             </form>
@@ -164,8 +199,7 @@
                 if (element.innerHTML === 'Start tour') {
                     element.innerHTML = 'End tour';
                     document.getElementById('tour-playlist').style.display = 'block';
-                    map.drawDotLines();
-                    map.drawDots();
+                    map.drawTour();
                 }
                 else {
                     element.innerHTML = 'Start tour';
