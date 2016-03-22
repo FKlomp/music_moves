@@ -4,6 +4,9 @@ var SearchBar = function () {
         SONG: 1
     };
     
+    this.currentSong = null;
+    this.currentArtist = null;
+    
     this.options = {
         selectedQueryType: this.searchTypes.ARTIST,
         queryTypes: [{
@@ -58,7 +61,6 @@ SearchBar.prototype.updateFilter = function (evt) {
         url = 'api/streamwatch/artist/country';
     }
     
-    console.log(url);
     var promise = new Promise(function(resolve, reject) {
         d3.json(url, function(err, data) {
             (err) ? reject(err) : resolve(data);
@@ -92,8 +94,10 @@ SearchBar.prototype.selectItem = function (evt) {
         
     if (this.options.selectedQueryType === this.searchTypes.SONG) {
         url = 'api/streamwatch/song/country?song=' + encodeURI(id);
+        this.currentSong = id;
     } else {
-        url = 'api/streamwatch/artist/country?mbId=' + id;
+        url = 'api/streamwatch/artist/country?mbId=' + encodeURI(id) ;
+        this.currentArtist = id;
     }
     
     if (url) {
