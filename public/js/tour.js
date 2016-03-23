@@ -55,3 +55,15 @@ function tourSongInfo(songlist){
 	console.log(song);*/
 	var mbId = searchBar.currentArtist;
 }
+
+function tourCountries(data){
+	var countries = data;
+		for(var i = 0; i < 5; i++) {
+	    	if(i < data.length) {
+	        	document.getElementById('tourStops').rows[i].cells[1].innerHTML = data[i];
+	    	} else{
+				document.getElementById('tourStops').rows[i].cells[1].innerHTML = '-';
+	    	}
+	    }
+
+}

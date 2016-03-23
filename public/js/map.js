@@ -236,7 +236,7 @@ Map.prototype.drawDotLines = function (tourcoordinates) {
         cleanPath = d3.geo.path().projection(null),
         routeLines = [];
     var tourRoute = [];
-
+    var countriesArray = [];
     coordinateArray = tourcoordinates;
     var coordinateAmsterdam = [4.8909347, 52.3738007];
     var startCoordinate;
@@ -268,6 +268,10 @@ Map.prototype.drawDotLines = function (tourcoordinates) {
             }
             // Add route to tourRoute, remember place added to tourRoute
             tourRoute.push([coordinateA, closestCoordinate]);
+
+            //countriesArraytemp[i] = countriesArray[tourcoordinates.indexOf(closestCoordinate)];
+
+
             placesAddedToTour.push(closestCoordinate);
             startCoordinate = closestCoordinate;
         }
@@ -282,6 +286,17 @@ Map.prototype.drawDotLines = function (tourcoordinates) {
             tourRoute.push([closestCoordinate, coordinateAmsterdam]);
         }
     }
+
+    for(var temp2 = 0; temp2 < placesAddedToTour.length; temp2++) {
+        for(var temp = 0; temp < features.length; temp++) {
+            if(d3.geo.distance(placesAddedToTour[temp2],cleanPath.centroid(features[temp])) == 0) {
+                countriesArray.push(features[temp]['properties']['name']);
+            }
+
+        }
+    }
+
+    tourCountries(countriesArray);
 
     // Draw lines for route
     for (var i in tourRoute) {
@@ -304,6 +319,8 @@ Map.prototype.drawDotLines = function (tourcoordinates) {
         .style('stroke', '#00F5F1')
         .style("stroke-dasharray", ("3, 3"))
         .style("stroke-width", "2")
+        
+    map.drawDots(placesAddedToTour);
 }
 
 Map.prototype.drawTour = function () {
@@ -334,7 +351,6 @@ Map.prototype.drawTour = function () {
         for (var i = 0; i < data.length; i++) {
             var id = data[i]._id,
                 count = data[i].count;
-        
             for (var y = 0; y < features.length; y++) {
                 if ( features[y].id ==  id && id != 'NL'){
                     dots.push(cleanPath.centroid(features[y]));
@@ -349,8 +365,9 @@ Map.prototype.drawTour = function () {
         }
         
         //draw tour lines and dots
+        console.log(coordinateArray);
         map.drawDotLines(coordinateArray);
-        map.drawDots(coordinateArray);
+
 
     });
 
