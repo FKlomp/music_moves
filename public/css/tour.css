@@ -29,8 +29,16 @@
 	display: none;
 }
 
+table tr:hover {
+	font-weight: bold;
+}
+
 #tourSongs tr:hover td:last-child span {
 	display: block;
+}
+
+#tourSongs td:last-child:hover {
+	color: grey;
 }
 
 #tourStops tr td:first-child {
