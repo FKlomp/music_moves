@@ -36,7 +36,7 @@
         </style>
 
         <script>
-            var continentSelected = [];
+            var continentSelected = ("AS EU AF NA SA OC AN").split(" ");
 
 
             function start () {
@@ -113,7 +113,6 @@
                     onChange: function(element, checked) {
                         if (checked === true) {
                             continentSelected.push(element.val());
-
                         }
                         else if (checked === false) {
                             var index = continentSelected.indexOf(element.val());
