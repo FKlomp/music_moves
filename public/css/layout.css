@@ -194,3 +194,13 @@ input {
 	text-align: center;
 	padding: 0;
 }
+
+.multiselect-container {
+    min-width: 200px !important;
+}
+
+.multiselect-container li a label {
+    padding: 5px;
+    margin: 0;
+    width: 56px;
+}

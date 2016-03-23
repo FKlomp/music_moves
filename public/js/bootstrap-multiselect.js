@@ -396,7 +396,7 @@
             nonSelectedText: 'No continent selected',
             nSelectedText: 'continents selected',
             allSelectedText: 'All continents selected',
-            numberDisplayed: 3,
+            numberDisplayed: 2,
             disableIfEmpty: false,
             disabledText: '',
             delimiterText: ', ',
