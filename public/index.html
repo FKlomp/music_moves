@@ -206,23 +206,23 @@
                     <h1 style="text-align: center;">Tour information</h1>
                     <table id = "tourStops" class="table table-striped">
                         <tbody>
-                            <tr>
+                            <tr onmouseover="highlightDot(1)" onmouseout="removeHighlightDot(1)">
                                 <td>1</td>
                                 <td>Land 1</td>
                             </tr>
-                            <tr>
+                            <tr onmouseover="highlightDot(2)" onmouseout="removeHighlightDot(2)">
                                 <td>2</td>
                                 <td>Land 2</td>
                             </tr>
-                            <tr>
+                            <tr onmouseover="highlightDot(3)" onmouseout="removeHighlightDot(3)">
                                 <td>3</td>
                                 <td>Land 3</td>
                             </tr>
-                            <tr>
+                            <tr onmouseover="highlightDot(4)" onmouseout="removeHighlightDot(4)">
                                 <td>4</td>
                                 <td>Land 4</td>
                             </tr>
-                            <tr>
+                            <tr onmouseover="highlightDot(5)" onmouseout="removeHighlightDot(5)">
                                 <td>5</td>
                                 <td>Land 5</td>
                             </tr>
@@ -281,6 +281,20 @@
                     $('#tour-details').slideUp(400);
                     map.hideTour();
                 }
+            }
+
+            function highlightDot(dotNumber) {
+                newDotNumber = dotNumber-1
+                dotje = document.getElementById("tourCountry-" + newDotNumber);
+                    dotje.setAttribute("r","8px");
+                    dotje.style.strokeWidth = "6px";
+            }
+
+            function removeHighlightDot(dotNumber) {
+                newDotNumber = dotNumber-1
+                dotje = document.getElementById("tourCountry-" + newDotNumber);
+                    dotje.setAttribute("r","6px");
+                    dotje.style.strokeWidth = "2px";
             }
         </script>
 

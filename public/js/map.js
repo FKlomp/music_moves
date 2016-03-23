@@ -221,6 +221,7 @@ Map.prototype.drawDots = function(tourcoordinates){
         .attr('id', function (d, i) {
             return "tourCountry-"+i;
         })
+        .attr('class', 'test')
         .attr("cx", function (d) { 
             return map.projection(d)[0]; })
         .attr("cy", function (d) { 
