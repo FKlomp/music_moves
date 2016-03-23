@@ -66,7 +66,7 @@ SearchBar.prototype.updateFilter = function (evt) {
             (err) ? reject(err) : resolve(data);
         });
     }).then(function (data) {
-        map.reset();
+        //map.reset();
         
         setTimeout(function () {
             map.setData(data);

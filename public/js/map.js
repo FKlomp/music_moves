@@ -125,13 +125,13 @@ Map.prototype.floor = function (val) {
     return val;
 }
 
-Map.prototype.reset = function () {
+/*Map.prototype.reset = function () {
     this.data = [];
     
     $('#map').empty();
     
     this.init(this.topojson);
-}
+}*/
 
 Map.prototype.update = function (callback) {
     d3.select('#map')

@@ -1,0 +1,61 @@
+then(function (data) {
+	    var amountTopSongs = 5;
+
+	    var tourNameSongs = [];
+	    var tourSongName = '';
+
+	    for(var i = 0; i < amountTopSongs; i++) {
+	    	if(i < data.length) {
+	        	document.getElementById('tourSongs').rows[i].cells[0].innerHTML = data[i]['_id'];
+
+
+				/*
+				var inputElement = document.createElement('input');
+				inputElement.type = "button";
+				inputElement.value = "button";
+				inputElement.addEventListener('click', function(){
+				    tourSongInfo(data[i]['_id']);
+				});
+
+				console.log(inputElement);
+				*/
+				var inputElement = document.getElementById('tourSongs').rows[i].cells[1].createElement('input');
+				inputElement.type = "button";
+				inputElement.value = "button";
+				inputElement.addEventListener('click', function(){
+				    tourSongInfo(data[i]['_id']);
+				});
+
+
+
+/*
+				tourSongName = data[i]['_id'];
+				tourNameSongs.push(tourSongName);
+				console.log(tourSongName);
+				console.log(tourNameSongs);
+	        	document.getElementById('tourSongs').rows[i].cells[1].addEventListener('click', function(){
+				    tourSongInfo(tourNameSongs);
+				});*/
+
+	    	} else{
+				document.getElementById('tourSongs').rows[i].cells[0].innerHTML = '-';
+	    	}
+	    }
+
+	 });
+}
+function tourSongInfo(songlist){
+	console.log(songlist);
+	console.log(this);
+	console.log(this.rowIndex);
+	//.rowIndex
+
+
+	/*for(var i = 0; i< songlist.length;i++)
+	{
+		document.getElementById('tourSongs').rows[i].cells[0]
+	}
+	document.getElementById('tourSongs').rows[i].cells[0]
+	console.log(song);*/
+	var mbId = searchBar.currentArtist;
+}

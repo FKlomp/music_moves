@@ -445,7 +445,88 @@ var Server = {
             }.bind(this));
         }.bind(this));
 
-        
+        app.get('/api/streamwatch/tour/song/test', function (req, res) {
+            var continent = req.query.continent.split(","),
+                match = {},
+                aggregate = [
+                {   
+                    $group: { _id : "$song", count: { $sum: "$count" }}
+                },
+                { $sort : { count : -1} }];
+
+            if (continent[0] === '') {
+                var continents = "AS EU AF NA SA OC AN";
+                continent = continents.split(" ");
+            }
+            
+            match.continent = { $in: continent};
+
+            if (req.query.mbId) {
+                match['artists.mbId'] = req.query.mbId;
+            } else if (this.online) {
+                match['artists.mbId'] = { $in: this.artistIds };
+            }
+
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+            //TODO: SONG
+
+            this.mongoDB.collection('song_stats_geo_monthly', function(err, collection2) {
+                if(err) res.send(err);
+                
+                collection2.aggregate(aggregate).limit(5).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    console.log(docs);
+                    console.log(match['artists.mbId']);
+                    console.log(docs[0]['_id']);
+                    /*
+                    http://localhost:3000/api/streamwatch/tour/song/test?continent=&mbId=c0c881d0-78d6-47a9-8d12-ad3f2bbfab10
+                    [ { _id: 'one 2 one', count: 10 },
+                      { _id: 'charles fenckler', count: 5 },
+                      { _id: 'dwail', count: 1 },
+                      { _id: 'time for grace', count: 1 } ]
+*/
+                    
+                    this.mongoDB.collection('song_info', function(err, collection3) {
+                        if(err) res.send(err);
+                        var querySongInfo = {};
+            
+                        if (req.query.q) query['lastfm_info.artist.name'] = new RegExp(req.query.q, 'i');
+                        
+                        if (this.online) {
+                            query.mbId = { $in: this.artistIds };
+                        }
+
+                        collection3.find(querySongInfo).toArray(function(err, docs2) {
+                            if(err) res.send(err);
+                            
+                            
+                            res.json(docs);
+                        });
+                    }.bind(this));
+                });
+            }.bind(this));
+        }.bind(this));
+//http://localhost:3000/api/streamwatch/song?song=&q=c0c881d0-78d6-47a9-8d12-ad3f2bbfab10
+
+        app.get('/api/streamwatch/tour/song/info', function (req, res) {
+            var query = {}
+            var songs = req.query.song.split(",");
+
+            if (req.query.song) query.song = { $in: songs};
+            if (req.query.mbId) query['artists.mbId'] = new RegExp(req.query.mbId, 'i');
+            //console.log(query);
+            this.mongoDB.collection('song_info', function(err, collection) {
+                collection.find(query).limit(20).toArray(function(err, docs) {
+                    res.json(docs);
+                });
+            });
+        }.bind(this));
+
+
         app.listen(3000, function () {
             console.log('App listening on port 3000!');
         });
