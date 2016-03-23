@@ -108,5 +108,26 @@ input {
 }
 
 .input-group {
-	width: 80%;
+	max-width: 75%;
+}
+
+.multiselect {
+    width: 200px;
+}
+
+.multiselect-container>li>a>label {
+	padding: 3px 20px 3px 10px;
+}
+
+.dropdown-menu.pull-right {
+	left: 0;
+}
+
+#filter-dropdown {
+	min-width: 0;
+}
+
+#filter-dropdown>li>a { 
+	text-align: center;
+	padding: 0;
 }
