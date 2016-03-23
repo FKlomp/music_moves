@@ -142,8 +142,8 @@
 
         <div id="loader" style="text-align: center;"><img style="margin-top: 200px;" src="images/ring-alt.svg"></div>
         <nav class="navbar navbar-default navbar-fixed-top">
-            <form id="search-form" class="navbar-form navbar-left" role="search" style="width: 100%;">
-                <div class="input-group" style="width: 100%;">
+            <form id="search-form" class="navbar-form" role="search">
+                <div class="input-group">
                     <div class="input-group-btn">
                         <button id="filter-button" type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                         <ul id="filter-dropdown" class="dropdown-menu pull-right"></ul>
@@ -153,6 +153,7 @@
                         <button id="search-submit" class="btn btn-primary" type="button">Search</button>
                     </span>
                 </div>
+
                 <div> 
                     <select id="continents-selector" multiple="multiple">
                         <option value="AS">AS</option>
@@ -164,6 +165,7 @@
                         <option value="AN">AN</option>
                     </select>
                 </div>
+
                 <button id="plan-tour-button" onClick="controlTour()" class="btn plan-tour-button btn-warning btn-primary" type="button">Start tour</button>
             </form>
         </nav>

@@ -97,3 +97,16 @@ input {
 	font-size: 16px;
 	padding: 0 10px;
 }
+
+.input-group-addon, .input-group-btn {
+	width: 1% !important;
+}
+
+.navbar-form {
+	display: flex;
+	justify-content: space-between;
+}
+
+.input-group {
+	width: 80%;
+}
