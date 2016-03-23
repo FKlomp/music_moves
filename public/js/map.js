@@ -272,7 +272,7 @@ Map.prototype.drawDotLines = function (tourcoordinates) {
         }
 
         // Route always ends in Amsterdam
-        if (placesAddedToTour.length === 4) {
+        if (placesAddedToTour.length === coordinateArray.length) {
             for (i in coordinateArray) {
                 if (placesAddedToTour.indexOf(coordinateArray[i]) == -1) {
                     var closestCoordinate = coordinateArray[i];
@@ -336,35 +336,22 @@ Map.prototype.drawTour = function () {
         
             for (var y = 0; y < features.length; y++) {
                 if ( features[y].id ==  id && id != 'NL'){
-
-                    console.log(id);
                     dots.push(cleanPath.centroid(features[y]));
                     break;
                 }
             }
         }
-        //console.log(dots);
         if(dots.length > tourSize) {
             coordinateArray = dots.slice(0,5);
         }else{
             coordinateArray = dots;
         }
-
-            console.log(coordinateArray)
-
-        //coordinateArray.push(cleanPath.centroid(features[0]), cleanPath.centroid(features[23]), [52.908902, -8.789062], [53.330873, -1.054687]);
-
+        
         //draw tour lines and dots
         map.drawDotLines(coordinateArray);
         map.drawDots(coordinateArray);
 
     });
-
-
-
-
-
-
 
 }
 
