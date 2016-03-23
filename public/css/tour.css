@@ -41,3 +41,10 @@
 	z-index: 99999999;
 }
 
+.highlightDot {
+	stroke-width: 6px !important;
+	r: 8px !important;
+	stroke: #41FFFC !important;
+}
+
+

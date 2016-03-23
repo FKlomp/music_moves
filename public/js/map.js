@@ -212,14 +212,15 @@ Map.prototype.drawDots = function(tourcoordinates){
     var fiveDots = tourcoordinates;
     fiveDots.push(coordinateAmsterdam);
 
-
-
     d3.select('g.zoom')
         .append('g')
         .attr('class', 'dots')
         .selectAll("path .edge") 
         .data(fiveDots).enter()
         .append("circle")
+        .attr('id', function (d, i) {
+            return "tourCountry-"+i;
+        })
         .attr("cx", function (d) { 
             return map.projection(d)[0]; })
         .attr("cy", function (d) { 
