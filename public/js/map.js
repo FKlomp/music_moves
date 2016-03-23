@@ -365,7 +365,6 @@ Map.prototype.drawTour = function () {
         }
         
         //draw tour lines and dots
-        console.log(coordinateArray);
         map.drawDotLines(coordinateArray);
 
 

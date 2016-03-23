@@ -507,8 +507,8 @@ var Server = {
             if (req.query.mbId) query['artists.mbId'] = new RegExp(req.query.mbId, 'i');
             //console.log(query);
             this.mongoDB.collection('song_info', function(err, collection) {
-                collection.find(query).limit.toArray(function(err, docs) {
-                    res.json(docs);  
+                collection.find(query).toArray(function(err, docs) {
+                    res.json(docs);
                 });
             });
         }.bind(this));
