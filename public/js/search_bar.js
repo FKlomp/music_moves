@@ -111,6 +111,8 @@ SearchBar.prototype.selectItem = function (evt) {
             hideLoader();
             
             map.update();
+
+            $('#plan-tour-button').prop('disabled', false);
         });
     }
 }
@@ -142,6 +144,7 @@ SearchBar.prototype.showArtists = function (data) {
 }
 
 SearchBar.prototype.submit = function () {
+
     var query = $('#search-bar').val(),
         resultDiv = $('#search-results');
     

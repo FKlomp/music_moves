@@ -106,6 +106,7 @@
             }
             
             $(document).ready(function () {
+                $('#plan-tour-button').prop('disabled', true);
 
                 //continent selection
                 $('#continents-selector').multiselect({
@@ -122,7 +123,6 @@
                         }
                     }
                 });
-
 
                 window.showLoader = function () {
                     $('#loader').show();
@@ -168,13 +168,13 @@
 
                 <div> 
                     <select id="continents-selector" multiple="multiple">
-                        <option value="AS">Asia</option>
-                        <option value="EU">Europe</option>
-                        <option value="AF">Africa</option>
-                        <option value="NA">North America</option>
-                        <option value="SA">South America</option>
-                        <option value="OC">Oceania</option>
-                        <option value="AN">Antartica</option>
+                        <option selected="selected" value="AS">Asia</option>
+                        <option selected="selected" value="EU">Europe</option>
+                        <option selected="selected" value="AF">Africa</option>
+                        <option selected="selected" value="NA">North America</option>
+                        <option selected="selected" value="SA">South America</option>
+                        <option selected="selected" value="OC">Oceania</option>
+                        <option selected="selected" value="AN">Antartica</option>
                     </select>
                 </div>
 
