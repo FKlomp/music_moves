@@ -494,7 +494,7 @@ var Server = {
                 collection.aggregate(aggregate).limit(5).toArray(function(err, docs) {
                     if(err) res.send(err);
                     
-                    res.json(docs);
+                    res.json(docs); 
                 });
             }.bind(this));
         }.bind(this));
