@@ -44,15 +44,7 @@ function tourSongInfo(songlist){
 	console.log(songlist);
 	console.log(this);
 	console.log(this.rowIndex);
-	//.rowIndex
 
-
-	/*for(var i = 0; i< songlist.length;i++)
-	{
-		document.getElementById('tourSongs').rows[i].cells[0]
-	}
-	document.getElementById('tourSongs').rows[i].cells[0]
-	console.log(song);*/
 	var mbId = searchBar.currentArtist;
 }
 

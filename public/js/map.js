@@ -319,7 +319,7 @@ Map.prototype.drawDotLines = function (tourcoordinates) {
         .style('stroke', '#00F5F1')
         .style("stroke-dasharray", ("3, 3"))
         .style("stroke-width", "2")
-        
+
     map.drawDots(placesAddedToTour);
 }
 
@@ -365,7 +365,6 @@ Map.prototype.drawTour = function () {
         }
         
         //draw tour lines and dots
-        console.log(coordinateArray);
         map.drawDotLines(coordinateArray);
 
 
