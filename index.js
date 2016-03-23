@@ -270,6 +270,60 @@ var Server = {
             }.bind(this));
         }.bind(this));
         
+        app.get('/api/streamwatch/artist/monthly', function (req, res) {
+            var match = {},
+                aggregate = [],
+                date = {};
+            
+            if (req.query.mbId) {
+                match.mbId = req.query.mbId;
+            } else if (this.online) {
+                match.mbId = { $in: this.artistIds };
+            }
+            
+            if (!match.mbId) {
+                aggregate.push({
+                    $group: { 
+                        _id: "$date",
+                        date: { $first: "$date" },
+                        count: { $sum: "$count" }
+                    }
+                });
+            }
+            
+            if (req.query.begin) {
+                date["$gte"] = new Date(req.query.begin);
+            }
+            
+            if (req.query.end) {
+                date["$lte"] = new Date(req.query.end);
+            }
+            
+            if (Object.keys(date).length > 0) {
+                match.date = date;
+            }
+            
+            if (req.query.country) {
+                match.country = req.query.country;
+            }
+            
+            if (Object.keys(match).length > 0) {
+                aggregate.unshift({
+                    $match: match
+                });
+            }
+            
+            this.mongoDB.collection('artist_stats_geo_monthly', function(err, collection) {
+                if(err) res.send(err);
+                
+                collection.aggregate(aggregate).toArray(function(err, docs) {
+                    if(err) res.send(err);
+                    
+                    res.json(docs);
+                });
+            }.bind(this));
+        }.bind(this));
+        
         app.get('/api/streamwatch/song/country', function (req, res) {
             var match = {},
                 aggregate = [{

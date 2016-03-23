@@ -21,6 +21,7 @@
         <script src="js/search_bar.js" type="text/javascript"></script>
         <script src="js/song_chart.js" type="text/javascript"></script>
         <script src="js/tag_chart.js" type="text/javascript"></script>
+        <script src="js/line_chart.js" type="text/javascript"></script>
         <script src="js/timeline.js" type="text/javascript"></script>
         <script src="js/tour.js" type="text/javascript"></script>
         <script src="js/bootstrap-slider.js" type="text/javascript"></script>
@@ -39,12 +40,26 @@
 
 
             function start () {
-                var promise = new Promise(function(resolve, reject) {
-                    d3.json('api/streamwatch/artist/country', function(err, data) {
-                        (err) ? reject(err) : resolve(data);
-                    });
-                })
-                .then(loadMap);
+                window.searchBar = new SearchBar();
+                window.songChart = new SongChart();
+                window.tagChart = new TagChart();
+                window.lineChart = new LineChart();
+                window.map = new Map({
+                    onReady: function () {
+                        var promise = new Promise(function(resolve, reject) {
+                            d3.json('api/streamwatch/artist/country', function(err, data) {
+                                (err) ? reject(err) : resolve(data);
+                            });
+                        })
+                        .then(loadMap);
+                    },
+                    onZoomIn: showFooter,
+                    onZoomOut: hideFooter
+                });
+                
+                $('rect.background').on('click', hideFooter);
+
+                TimeSlider();
             };
             
             function loadMap(data) {
@@ -66,13 +81,22 @@
                     songChart.setData(data);
                 });
                 
-                /*var promise = new Promise(function(resolve, reject) {
+                var promise = new Promise(function(resolve, reject) {
                     d3.json('api/streamwatch/country/toptags?q=' + d.id, function(err, data) {
                         (err) ? reject(err) : resolve(data);
                     });
                 }).then(function (data) {
                     tagChart.setData(data);
-                });*/
+                });
+                
+                var promise = new Promise(function(resolve, reject) {
+                    d3.json('api/streamwatch/artist/monthly?country=' + d.id, function(err, data) {
+                        (err) ? reject(err) : resolve(data);
+                    });
+                })
+                .then(function (data) {
+                    lineChart.setData(data)
+                });
                 
                 $('#country-details').slideDown(400);
             }
@@ -108,27 +132,27 @@
                     $('#loader').fadeOut(400, callback);
                 }
                 
-                window.map = new Map({
-                    onReady: start,
-                    onZoomIn: showFooter,
-                    onZoomOut: hideFooter
+                $('#start-button').on('click', function (evt) {
+                    $('#splashscreen').hide();
+                    showLoader();
+                    start();
+                    
+                    evt.preventDefault();
                 });
-                
-                window.searchBar = new SearchBar();
-                window.songChart = new SongChart();
-                window.tagChart = new TagChart();
-                
-                $('rect.background').on('click', hideFooter);
-
-                TimeSlider();
             });
 
         </script>
 	</head>
 
 	<body>
-
-        <div id="loader" style="text-align: center;"><img style="margin-top: 200px;" src="images/ring-alt.svg"></div>
+        <div id="splashscreen">
+            <h1>MusicMoves</h1>
+            <h2>Explore the worldwide movement of artists and songs from Amsterdam</h2>
+            <a id="start-button" class="ghost-button" type="button">START</a>
+        </div>
+        <div id="loader" style="text-align: center; display: none;">
+            <img style="margin-top: 200px;" src="images/ring-alt.svg">
+        </div>
         <nav class="navbar navbar-default navbar-fixed-top">
             <form id="search-form" class="navbar-form" role="search">
                 <div class="input-group">
@@ -164,14 +188,11 @@
                 <div class="col-md-4">
                     <h1 style="text-align: center;">Popularity</h1>
                     <div id="popchart" class="popchart"></div>
-                    <script src="js/popchart.js"></script>
                 </div>
-                
                 <div class="col-md-4">
                     <h1 style="text-align: center;">Top Songs</h1>
                     <div id="songchart" class="songchart"></div>
                 </div>
-                
                 <div class="col-md-4">
                     <h1 style="text-align: center;">Populair Tags</h1>
                     <div id="tag-chart" class="tag-chart"></div>
