@@ -25,6 +25,14 @@
 	width: 40px;
 }
 
+#tourSongs tr td:last-child span {
+	display: none;
+}
+
+#tourSongs tr:hover td:last-child span {
+	display: block;
+}
+
 #tourStops tr td:first-child {
 	width: 30px;
 }
