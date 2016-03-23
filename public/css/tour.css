@@ -20,12 +20,16 @@
 #tour-details iframe {
     width: 100%;
 }
-        
+
 #tourSongs tr td:last-child {
 	width: 40px;
 }
 
 #tourStops tr td:first-child {
 	width: 30px;
+}
+
+#country-details {
+	z-index: 99999999;
 }
 
