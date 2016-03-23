@@ -14,11 +14,12 @@ function TimeSlider(){
     $("#timeslider-enabled").click(function() {
         if(this.checked) {
             slider.enable();
+            document.getElementById('adjust-time').setAttribute("style", "color: orange;");
         }
         else {
             slider.disable();
-
             uncheckBox();
+            document.getElementById('adjust-time').setAttribute("style", "color: grey;");
         }
     });
 

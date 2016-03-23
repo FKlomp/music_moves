@@ -1,0 +1,41 @@
+.timeline-holder {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 35px;
+	margin-bottom: 0;
+	line-height: 35px;
+	display: flex;
+	align-content: middle;
+}
+
+.slider-selection {
+    background: linear-gradient(to bottom, #F4B050 0%, #EEA23E 100%);
+}
+
+.slider-handle {
+    margin-top: -3px !important;
+    border: 2px solid rgb(202, 138, 53);
+    background-image: none;
+    background: white;
+    width: 16px;
+    height: 16px;
+}
+
+.slider-disabled {
+    opacity: .5;
+}
+
+#timeline-div {
+	padding: 5px 0px 5px 30px;
+}
+
+.adjust-time {
+	color: grey;
+}
+
+#timeline-div input {
+ 	width: 50px;
+ 	text-align: right;
+ }
+
