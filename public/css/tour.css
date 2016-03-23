@@ -12,3 +12,20 @@
 	font-size: 10px;
 }
 
+#tour-details {
+    height: 250px;
+    padding: 0 25px;
+}
+
+#tour-details iframe {
+    width: 100%;
+}
+        
+#tourSongs tr td:last-child {
+	width: 40px;
+}
+
+#tourStops tr td:first-child {
+	width: 30px;
+}
+

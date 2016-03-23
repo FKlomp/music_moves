@@ -158,33 +158,6 @@
             </form>
         </nav>
         <div id="search-results" class="list-group"></div>
-        <div id="tour-playlist" class="tour-playlist">
-            <h3>Suggested tour playlist</h3>
-            <table id = "tourSongs" class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td>Song Title</td>
-                        <td>Play</td>
-                    </tr>
-                    <tr>
-                        <td>Song Title</td>
-                        <td>Play</td>
-                    </tr>
-                    <tr>
-                        <td>Song Title</td>
-                        <td>Play</td>
-                    </tr>
-                    <tr>
-                        <td>Song Title</td>
-                        <td>Play</td>
-                    </tr>
-                    <tr>
-                        <td>Song Title</td>
-                        <td>Play</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 		<div class="map" id="map" style="margin-top: 50px;"></div>
         <div id="country-details" class="navbar navbar-default navbar-fixed-bottom" style="display: none;" >
             <div class="row">
@@ -205,18 +178,86 @@
                 </div>
             </div>
         </div>
+
+        <div id="tour-details" class="navbar navbar-default navbar-fixed-bottom" style="display: none;" >
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 style="text-align: center;">Tour information</h1>
+                    <table id = "tourStops" class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Land 1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Land 2</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Land 3</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Land 4</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Land 5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                
+                <div class="col-md-4">
+                    <h1 style="text-align: center;">Suggested tour playlist</h1>
+                    <table id = "tourSongs" class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td>Song Title</td>
+                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Song Title</td>
+                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Song Title</td>
+                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Song Title</td>
+                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Song Title</td>
+                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                
+                <div class="col-md-4">
+                    <h1 style="text-align: center;">Listen to songs</h1>
+                    <iframe width="auto" height="200" src="https://www.youtube.com/embed/_swivbEsD50" frameborder="0" allowfullscreen></iframe>
+                    
+                </div>
+            </div>
+        </div>
         <script>
             function controlTour() {
                 var element = document.getElementById('plan-tour-button');
                 if (element.innerHTML === 'Start tour') {
                     element.innerHTML = 'End tour';
-                    document.getElementById('tour-playlist').style.display = 'block';
+                    $('#tour-details').slideDown(400);
                     map.drawTour();
                     tourData();
                 }
                 else {
                     element.innerHTML = 'Start tour';
-                    document.getElementById('tour-playlist').style.display = 'none';
+                    $('#tour-details').slideUp(400);
                     map.hideTour();
                 }
             }
