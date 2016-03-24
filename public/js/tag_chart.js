@@ -36,8 +36,7 @@ TagChart.prototype.setData = function (data) {
         
         return d;
     }.bind(this)),
-
-    console.log(this.data);
+    
     this.nodes = this.layout.nodes( { parent: null, children: this.data } ).filter(function(d) { return !d.children; });
      
     this.bubbles.selectAll('.bubble')

@@ -31,29 +31,51 @@ function tourData(){
 				(err) ? reject(err) : resolve(data);
 			});
 		}).then(function (data) {
-
-			console.log(data);
-			for(var i = 0; i < tourNameSongs.length; i++) {
+            console.log('data', data)
+			var temparray = [];
+			var counter = 0;
+			for(var i = 0; i < data.length; i++) {
 				var index = tourNameSongs.indexOf(data[i].song);
-				document.getElementById('tourSongs').rows[index].cells[1].innerHTML = data[i].videoId;
+
+				//if(temparray.indexOf(index) == -1){
+					//i--;
+				//}else{
+				if(temparray.indexOf(index) == -1)
+				{
+					temparray.push(index);
+					var videoUrl = data[i].videoId;
+					$('#youtubebutton' + index.toString()).click( createCallbackYoutube( videoUrl ) );
+					if(index == 0 && counter == 0){
+						counter = 1;
+						var videoid = videoUrl;
+						$("#actualyoutubeframe").remove();
+						$('<iframe id = "actualyoutubeframe" width="auto" height="200" frameborder="0" allowfullscreen></iframe>')
+						    .attr("src", "http://www.youtube.com/embed/" + videoid)
+						    .appendTo("#youtubeframe");
+					}
+
+					
+				}
+
 			}
+
 	 	});
 	 });
 }
-function tourSongInfo(songlist){
-	console.log(songlist);
-	console.log(this);
-	console.log(this.rowIndex);
-	//.rowIndex
+function createCallbackYoutube( i ){
+	return function(){
+		if(i){
+			console.log(i);
 
 
-	/*for(var i = 0; i< songlist.length;i++)
-	{
-		document.getElementById('tourSongs').rows[i].cells[0]
+			var videoid = i;
+			$("#actualyoutubeframe").remove();
+			$('<iframe id = "actualyoutubeframe" width="auto" height="200" frameborder="0" allowfullscreen></iframe>')
+			    .attr("src", "http://www.youtube.com/embed/" + videoid)
+			    .appendTo("#youtubeframe");
+					}
+		//alert('you clicked' + i);
 	}
-	document.getElementById('tourSongs').rows[i].cells[0]
-	console.log(song);*/
-	var mbId = searchBar.currentArtist;
 }
 
 function tourCountries(data){

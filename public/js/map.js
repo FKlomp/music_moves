@@ -82,7 +82,6 @@ Map.prototype.setData = function (data) {
     
     this.data = data;
     
-    console.log(this.data);
     var values = this.data.map(function(d) { return d.count; });
 
     // var min = d3.min(values);
@@ -367,7 +366,6 @@ Map.prototype.drawTour = function () {
         }
         
         //draw tour lines and dots
-        console.log(coordinateArray);
         map.drawDotLines(coordinateArray);
 
 

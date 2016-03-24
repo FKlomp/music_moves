@@ -680,7 +680,7 @@ var Server = {
                 collection.aggregate(aggregate).limit(5).toArray(function(err, docs) {
                     if(err) res.send(err);
                     
-                    res.json(docs);
+                    res.json(docs); 
                 });
             }.bind(this));
         }.bind(this));
@@ -693,7 +693,7 @@ var Server = {
             if (req.query.mbId) query['artists.mbId'] = new RegExp(req.query.mbId, 'i');
             //console.log(query);
             this.mongoDB.collection('song_info', function(err, collection) {
-                collection.find(query).limit(20).toArray(function(err, docs) {
+                collection.find(query).toArray(function(err, docs) {
                     res.json(docs);
                 });
             });

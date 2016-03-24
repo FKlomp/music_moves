@@ -36,7 +36,7 @@
         </style>
 
         <script>
-            var continentSelected = [];
+            var continentSelected = ("AS EU AF NA SA OC AN").split(" ");
             
             function serialize (obj) {
                 var p,
@@ -50,7 +50,7 @@
                 
                 return str.join('&');
             };
-        
+
             function start () {
                 window.selectedCountry = null;
                 
@@ -119,6 +119,7 @@
                 showLoader();
                 
                 if (searchBar.currentArtist != null) {
+                    $('#plan-tour-button').prop('disabled', false);
                     params.mbId = searchBar.currentArtist
                 }
                 
@@ -214,7 +215,6 @@
                     onChange: function(element, checked) {
                         if (checked === true) {
                             continentSelected.push(element.val());
-
                         }
                         else if (checked === false) {
                             var index = continentSelected.indexOf(element.val());
@@ -338,34 +338,33 @@
                         <tbody>
                             <tr>
                                 <td>Song Title</td>
-                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                                <td><span id ="youtubebutton0" class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
                             </tr>
                             <tr>
                                 <td>Song Title</td>
-                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                                <td><span id ="youtubebutton1"class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
                             </tr>
                             <tr>
                                 <td>Song Title</td>
-                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                                <td><span id ="youtubebutton2"class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
                             </tr>
                             <tr>
                                 <td>Song Title</td>
-                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                                <td><span id ="youtubebutton3"class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
                             </tr>
                             <tr>
                                 <td>Song Title</td>
-                                <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                                <td><span id ="youtubebutton4" class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
                             </tr>
                         </tbody>
                     </table>
                     
                 </div>
-                
-                <!--<div class="col-md-4">
-                    <h1 style="text-align: center;">Listen to songs</h1>
-                    <iframe width="auto" height="200" src="https://www.youtube.com/embed/_swivbEsD50" frameborder="0" allowfullscreen></iframe>
-                    
-                </div>-->
+                <div class="col-md-4">
+                    <div id= "youtubeframe">
+                        <iframe id="actualyoutubeframe" width="auto" height="200" src="https://www.youtube.com/embed/_swivbEsD50" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
         </div>
         <script>
