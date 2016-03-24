@@ -389,11 +389,13 @@ Map.prototype.hideTour = function () {
         .ease("linear")
         .style('opacity', 0)
         .attr("stroke-dashoffset", function() { return -this.getTotalLength(); } )
+        .remove()
 
     d3.selectAll('.dots')
         .transition()
         .duration(500)
         .ease("linear")
         .style('opacity', 0)
+        .remove()
 }
 
