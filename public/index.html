@@ -104,6 +104,14 @@
             }
             
             function updateAll () {
+                if (searchBar.currentArtist == null) {
+                    $('#plan-tour-button')
+                        .html('Start tour')
+                        .attr('disabled', 'disabled');
+                    $('#tour-details').slideUp(400);
+                    map.hideTour();
+                }
+                
                 var months = timeLine.getMonths();
                 updateMap(months[0], months[1]);
                 
@@ -373,6 +381,7 @@
                 if (element.innerHTML === 'Start tour') {
                     element.innerHTML = 'End tour';
                     $('#tour-details').slideDown(400);
+                    map.map.clicked();
                     map.drawTour();
                     tourData();
                 }

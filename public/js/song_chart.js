@@ -46,20 +46,20 @@ var SongChart = function () {
 }
 
 SongChart.prototype.setData = function (data) {
-    if (data.length < 5) {
-        for (var i = data.length; i < 5; i++) {
-            data[i] = {
-                _id: {
-                    song: ''
-                }, 
-                artist: {
-                    name: ''
-                }
+    var i;
+
+    for (i = data.length; i < 5; i++) {
+        data[i] = {
+            _id: {
+                song: ''
+            }, 
+            artist: {
+                name: ''
             }
-            
-            data[i][this.options.column] = 0;
         }
-    };
+        
+        data[i][this.options.column] = 0;
+    }
     
     var values = data.map(function (d) { return d[this.options.column]; }.bind(this)),
         names = data.map(this.options.unit),
