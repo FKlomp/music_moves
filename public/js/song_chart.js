@@ -132,5 +132,6 @@ SongChart.prototype.setData = function (data) {
         .attr("y", function (d) { return this.options.y + this.yScale(this.options.unit(d)) + 20; }.bind(this))
         .attr("width", this.options.width)
         .attr("height", this.yScale.rangeBand())
+        .style('pointer-events', 'none')
         .text(this.options.format);
 }
