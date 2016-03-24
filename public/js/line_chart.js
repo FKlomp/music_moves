@@ -1,7 +1,7 @@
 var LineChart = function () {
     this.options = {
         x: 60,
-        y: 40,
+        y: 10,
         width: 320,
         height: 240,
         dateFormat: d3.time.format("%b-%y"),
@@ -33,7 +33,7 @@ var LineChart = function () {
         		.attr("width", this.options.width + 40)
         		.attr("height", this.options.height + 40)
             .append("g")
-                .attr("transform", "translate(" + this.options.x + ", 20)");
+                .attr("transform", "translate(" + this.options.x + ", " + this.options.y + ")");
     
     this.chart.append("path")
             .attr("transform", "translate(0,0)")

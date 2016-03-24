@@ -163,8 +163,6 @@
                 var months = timeLine.getMonths();
                  
                 updateFooter(months[0], months[1])
-                
-                $('#country-details').slideDown(400);
             }
             
             function updateFooter (begin, end) {
@@ -206,7 +204,10 @@
                     lineChart.setData(data)
                 });
                 
-                $('#country-details').slideDown(400);
+                var element = document.getElementById('plan-tour-button');
+                if (element.innerHTML != 'End tour') {
+                    $('#country-details').slideDown(400);
+                }
             }
             
             function hideFooter () {
@@ -296,15 +297,15 @@
         <div id="country-details" class="navbar navbar-default navbar-fixed-bottom" style="display: none;" >
             <div class="row">
                 <div class="col-md-4">
-                    <h1 style="text-align: center;">Popularity</h1>
+                    <h1 style="text-align: center;">Plays per month</h1>
                     <div id="popchart" class="popchart"></div>
                 </div>
                 <div class="col-md-4">
-                    <h1 style="text-align: center;">Top Songs</h1>
+                    <h1 style="text-align: center;">Top songs</h1>
                     <div id="songchart" class="songchart"></div>
                 </div>
                 <div class="col-md-4">
-                    <h1 style="text-align: center;">Populair Tags</h1>
+                    <h1 style="text-align: center;">Populair tags</h1>
                     <div id="tag-chart" class="tag-chart"></div>
                 </div>
             </div>
