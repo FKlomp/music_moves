@@ -3,7 +3,7 @@ var TagChart = function () {
         x: 30,
         y: -20,
         width: 350,
-        height: 300,
+        height: 280,
         column: 'count',
         colors: d3.scale.category10(),
         unit: function(d) {

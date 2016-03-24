@@ -1,64 +1,68 @@
-function TimeSlider(){
 
-    var times = ['2013-01-01T00:00:00Z','2013-02-01T00:00:00Z','2013-03-01T00:00:00Z','2013-06-01T00:00:00Z','2013-07-01T00:00:00Z','2013-08-01T00:00:00Z','2013-09-01T00:00:00Z','2013-10-01T00:00:00Z','2013-11-01T00:00:00Z','2013-12-01T00:00:00Z',
-        '2014-01-01T00:00:00Z','2014-02-01T00:00:00Z','2014-03-01T00:00:00Z','2014-04-01T00:00:00Z','2014-05-01T00:00:00Z','2014-06-01T00:00:00Z','2014-07-01T00:00:00Z','2014-08-01T00:00:00Z','2014-09-01T00:00:00Z','2014-10-01T00:00:00Z','2014-11-01T00:00:00Z','2014-12-01T00:00:00Z',
-        '2015-01-01T00:00:00Z','2015-02-01T00:00:00Z','2015-03-01T00:00:00Z','2015-04-01T00:00:00Z','2015-05-01T00:00:00Z','2015-06-01T00:00:00Z','2015-07-01T00:00:00Z','2015-08-01T00:00:00Z','2015-09-01T00:00:00Z','2015-10-01T00:00:00Z','2015-11-01T00:00:00Z','2015-12-01T00:00:00Z' ];
-        
-    var slider = new Slider("#timeslider");
-
-    slider.on("slideStop", function(slideEvt) {
-        changeTime(times[slideEvt]);
-        //$("#datetext").text(times[slideEvt]);
-    });
-
-    $("#timeslider-enabled").click(function() {
-        if(this.checked) {
-            slider.enable();
-            document.getElementById('adjust-time').setAttribute("style", "color: orange;");
+var TimeLine = function (options) {
+    this.options = this.options = $.extend({
+        dateFormat: d3.time.format("%b-%y"),
+        returnFormat: d3.time.format("%Y-%m-%d"),
+        onUpdate: function (begin, end) {
+            console.log('on update', begin, end);
         }
-        else {
-            slider.disable();
-            uncheckBox();
-            document.getElementById('adjust-time').setAttribute("style", "color: grey;");
-        }
-    });
-
+    }, options)
 }
 
-
-function changeTime(timedata) {
-
-    if(searchBar.currentArtist !== null){
-        url = 'api/streamwatch/dates/country?timeline=' + timedata + '&mbId=' + searchBar.currentArtist;
-    }else {
-        url = 'api/streamwatch/dates/country?timeline=' + timedata;
-    }
-
-    var promise = new Promise(function(resolve, reject) {
-        d3.json(url, function(err, data) {
-            (err) ? reject(err) : resolve(data);
-        });
-    }).then(function (data) {
-
-
-
-        map.setData(data);
-        map.update();
-
-
-
-    });
+TimeLine.prototype.getMonthCount = function (d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth() + 1;
+    months += d2.getMonth();
+    
+    return months <= 0 ? 0 : months;
 }
 
-function uncheckBox()
-{
-    var promise = new Promise(function(resolve, reject) {
-        d3.json('api/streamwatch/artist/country', function(err, data) {
-            (err) ? reject(err) : resolve(data);
-        });
-    })
-    .then(function (data) {
-        map.setData(data);
-        map.update();
+TimeLine.prototype.convertToMonth = function (i) {
+    var date = new Date(this.minDate);
+    date.setMonth(+i);
+    
+    return date; 
+}
+
+TimeLine.prototype.updateMonths = function (data) {
+    this.begin = this.convertToMonth(data[0]);
+    this.end = this.convertToMonth(data[1]);
+    
+    this.updateLabel();
+}
+
+TimeLine.prototype.getMonths = function () {
+    return [this.options.returnFormat(this.begin), this.options.returnFormat(this.end)];
+}
+
+TimeLine.prototype.updateLabel = function () {
+    $('.slider .tooltip-inner').html(this.options.dateFormat(this.begin) + ' : ' + this.options.dateFormat(this.end))
+}
+
+TimeLine.prototype.setSlider = function (data) {
+    this.minDate = new Date(data[0]);
+    this.maxDate = new Date(data[1]);
+    this.count = this.getMonthCount(this.minDate, this.maxDate);
+    
+    this.slider = new Slider("#timeslider", {
+        min: 0, 
+        max: this.count,
+        value: [0, this.count],
+        tooltip: 'always',
+        tooltip_position:'top'
     });
+    
+    this.updateMonths([0, this.count]);
+    
+    this.slider.on("slideStop", this.onUpdate.bind(this));
+    this.slider.on('slide', this.updateMonths.bind(this));
+    
+    $('#timeslider-div').show();
+}
+
+TimeLine.prototype.onUpdate = function (evt) {
+    this.updateMonths(evt);
+    
+    this.options.onUpdate(this.getMonths()[0], this.getMonths()[1]);
 }

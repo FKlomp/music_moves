@@ -1,7 +1,7 @@
 var SongChart = function () {
     this.options = {
         x: 50,
-        y: 20,
+        y: 15,
         width: 350,
         height: 300,
         column: 'count',

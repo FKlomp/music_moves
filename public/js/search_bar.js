@@ -1,4 +1,16 @@
-var SearchBar = function () {
+var removeResults = function (evt) {
+    if (!evt.target.classList.contains('list-group-item')) {
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        $('#search-results .list-group-item')
+        .slideUp(500);
+
+        document.removeEventListener('click', removeResults, true);
+    }
+};
+
+var SearchBar = function (options) {
     this.searchTypes = {
         ARTIST: 0,
         SONG: 1
@@ -7,7 +19,7 @@ var SearchBar = function () {
     this.currentSong = null;
     this.currentArtist = null;
     
-    this.options = {
+    this.options = $.extend({
         selectedQueryType: this.searchTypes.ARTIST,
         queryTypes: [{
             name: 'Artist',
@@ -15,8 +27,10 @@ var SearchBar = function () {
         },{
             name: 'Song',
             url: 'api/streamwatch/song'
-        }]
-    }
+        }],
+        onSubmit: function (evt) { console.log('onSubmit', evt); },
+        onFilterUpdate: function (evt) { console.log('onFilterUpdate', evt); }
+    }, options);
     
     $('#filter-button').html(this.options.queryTypes[this.options.selectedQueryType].name + ' <span class="caret"></span>');
     
@@ -53,7 +67,8 @@ SearchBar.prototype.updateFilter = function (evt) {
     this.options.selectedQueryType = parseInt(evt.target.id.split('-')[1]);
     $('#filter-button').html(this.options.queryTypes[this.options.selectedQueryType].name + ' <span class="caret"></span>');
     
-    showLoader();
+    this.options.onFilterUpdate(evt);
+    /*showLoader();
     
     if (this.options.selectedQueryType === this.searchTypes.SONG) {
         url = 'api/streamwatch/song/country';
@@ -78,7 +93,7 @@ SearchBar.prototype.updateFilter = function (evt) {
         
         setTimeout(map.update.bind(map), 1000)
         setTimeout(map.hideLines.bind(map), 2000)
-    });
+    });*/
     
     this.buildDropDown();
 }
@@ -90,7 +105,29 @@ SearchBar.prototype.selectItem = function (evt) {
     
     resultDiv.empty();
     
-    showLoader();
+    $('#search-submit')
+        .addClass('btn-danger')
+        .removeClass('btn-primary')
+        .html('Remove');
+        
+    $('#search-bar')
+        .val(evt.target.textContent)
+        .attr('disabled', 'disabled');
+
+    $('#filter-button').attr('disabled', 'disabled');
+    
+    document.removeEventListener('click', removeResults, true);
+    
+    if (this.options.selectedQueryType === this.searchTypes.SONG) {
+        this.currentArtist = id.split('_')[0];
+        this.currentSong = id.split('_')[1];
+    } else {
+        this.currentArtist = id;
+    }
+    
+    this.options.onSubmit(evt);
+    
+    /*showLoader();
         
     if (this.options.selectedQueryType === this.searchTypes.SONG) {
         url = 'api/streamwatch/song/country?song=' + encodeURI(id);
@@ -114,14 +151,14 @@ SearchBar.prototype.selectItem = function (evt) {
 
             $('#plan-tour-button').prop('disabled', false);
         });
-    }
+    }*/
 }
 
 SearchBar.prototype.showSongs = function (data) {
     var i;
 
     for (i = 0; i < data.length; i++) {
-        $('<button id="' + data[i].song + '" type="button" class="list-group-item">' +
+        $('<button id="' + data[i].artistMbId + '_' + data[i].song + '" type="button" class="list-group-item">' +
             data[i].artists[0].name + ' - ' + data[i].song +
             '</button>')
         .hide()
@@ -143,7 +180,26 @@ SearchBar.prototype.showArtists = function (data) {
     }
 }
 
-SearchBar.prototype.submit = function () {
+SearchBar.prototype.submit = function (evt) {
+    if ($('#search-bar').is(':disabled')){
+        $('#search-submit')
+            .addClass('btn-primary')
+            .removeClass('btn-danger')
+            .html('Search');
+    
+        $('#search-bar')
+            .val('')
+            .removeAttr('disabled');
+            
+        $('#filter-button').removeAttr('disabled');
+        
+        this.currentSong = null;
+        this.currentArtist = null;
+        
+        this.options.onSubmit(evt);
+        
+        return;
+    }
 
     var query = $('#search-bar').val(),
         resultDiv = $('#search-results');
@@ -157,19 +213,7 @@ SearchBar.prototype.submit = function () {
         } else {
             this.showArtists(data);
         }
-
-        var removeResults = function (evt) {
-            if (!evt.target.classList.contains('list-group-item')) {
-                evt.preventDefault();
-                evt.stopPropagation();
         
-                $('#search-results .list-group-item')
-                .slideUp(500);
-        
-                document.removeEventListener('click', removeResults, true);
-            }
-        };
-
         document.addEventListener('click', removeResults, true);
     }.bind(this))
 }

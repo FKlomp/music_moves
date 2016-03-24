@@ -4,7 +4,7 @@ var Map = function (options) {
     
     this.options = $.extend({
         width: 1152,
-        height: 600,
+        height: 550,
         domain: [0, 0],
         column: 'count',
         colors: colorbrewer.Reds[9],
@@ -82,6 +82,7 @@ Map.prototype.setData = function (data) {
     
     this.data = data;
     
+    console.log(this.data);
     var values = this.data.map(function(d) { return d.count; });
 
     // var min = d3.min(values);

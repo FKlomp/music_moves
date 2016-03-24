@@ -1,6 +1,6 @@
 var LineChart = function () {
     this.options = {
-        x: 40,
+        x: 60,
         y: 40,
         width: 320,
         height: 240,

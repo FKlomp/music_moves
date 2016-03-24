@@ -37,32 +37,63 @@
 
         <script>
             var continentSelected = [];
-
-
+            
+            function serialize (obj) {
+                var p,
+                    str = [];
+            
+                for (p in obj) {
+                    if (obj.hasOwnProperty(p)) {
+                        str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                    }
+                }
+                
+                return str.join('&');
+            };
+        
             function start () {
-                window.searchBar = new SearchBar();
+                window.selectedCountry = null;
+                
+                window.searchBar = new SearchBar({
+                    onSubmit: updateAll,
+                    onFilterUpdate: updateAll
+                });
                 window.songChart = new SongChart();
                 window.tagChart = new TagChart();
                 window.lineChart = new LineChart();
+                window.timeLine = new TimeLine({
+                    onUpdate: updateAll
+                });
                 window.map = new Map({
-                    onReady: function () {
-                        var promise = new Promise(function(resolve, reject) {
-                            d3.json('api/streamwatch/artist/country', function(err, data) {
-                                (err) ? reject(err) : resolve(data);
-                            });
-                        })
-                        .then(loadMap);
-                    },
+                    onReady: ready,
                     onZoomIn: showFooter,
                     onZoomOut: hideFooter
                 });
                 
                 $('rect.background').on('click', hideFooter);
-
-                TimeSlider();
             };
             
-            function loadMap(data) {
+            function ready () {
+                var requests = [
+                    new Promise(function(resolve, reject) {
+                        d3.json('api/streamwatch/artist/country', function(err, data) {
+                            (err) ? reject(err) : resolve(data);
+                        });
+                    }),
+                    new Promise(function(resolve, reject) {
+                        d3.json('/api/streamwatch/artist/monthly/dates', function(err, data) {
+                            (err) ? reject(err) : resolve(data);
+                        });
+                    })
+                ]
+                
+                Promise.all(requests).then(function (data) {
+                    loadMap(data[0]);
+                    timeLine.setSlider([data[1][0].min, data[1][0].max]);
+                });
+            }
+            
+            function loadMap (data) {
                 map.setData(data);
                 
                 hideLoader();
@@ -72,9 +103,77 @@
                 setTimeout(map.hideLines.bind(map), 2000)
             }
             
+            function updateAll () {
+                var months = timeLine.getMonths();
+                updateMap(months[0], months[1]);
+                
+                if (window.selectedCountry !== null) {
+                    updateFooter(months[0], months[1]);
+                }
+            }
+            
+            function updateMap (begin, end) {
+                var url = '/api/streamwatch/artist/monthly?',
+                    params = {};
+                
+                showLoader();
+                
+                if (searchBar.currentArtist != null) {
+                    params.mbId = searchBar.currentArtist
+                }
+                
+                if (begin && end){
+                    params.begin = begin;
+                    params.end = end;
+                }
+                
+                if (searchBar.options.selectedQueryType === searchBar.searchTypes.SONG) {
+                    url = '/api/streamwatch/song/monthly?';
+                    
+                    if (searchBar.currentSong != null) {
+                        params.song = searchBar.currentSong;
+                    }
+                }
+                
+                new Promise(function(resolve, reject) {
+                    d3.json(url + serialize(params), function(err, data) {
+                        (err) ? reject(err) : resolve(data);
+                    });
+                }).then(function (data) {
+                    map.setData(data);
+                
+                    hideLoader();
+                    
+                    map.update();
+                });
+            }
+            
             function showFooter (d) {
+                window.selectedCountry = d;
+                
+                var months = timeLine.getMonths();
+                 
+                updateFooter(months[0], months[1])
+                
+                $('#country-details').slideDown(400);
+            }
+            
+            function updateFooter (begin, end) {
+                var params = {
+                    q: window.selectedCountry.id
+                };
+        
+                if (searchBar.currentArtist != null) {
+                    params.mbId = searchBar.currentArtist
+                }
+        
+                if (begin && end){
+                    params.begin = begin;
+                    params.end = end;
+                }
+                
                 var promise = new Promise(function(resolve, reject) {
-                    d3.json('api/streamwatch/country/topsongs?q=' + d.id, function(err, data) {
+                    d3.json('api/streamwatch/country/topsongs?' + serialize(params), function(err, data) {
                         (err) ? reject(err) : resolve(data);
                     });
                 }).then(function (data) {
@@ -82,7 +181,7 @@
                 });
                 
                 var promise = new Promise(function(resolve, reject) {
-                    d3.json('api/streamwatch/country/toptags?q=' + d.id, function(err, data) {
+                    d3.json('api/streamwatch/country/toptags?' + serialize(params), function(err, data) {
                         (err) ? reject(err) : resolve(data);
                     });
                 }).then(function (data) {
@@ -90,7 +189,7 @@
                 });
                 
                 var promise = new Promise(function(resolve, reject) {
-                    d3.json('api/streamwatch/artist/monthly?country=' + d.id, function(err, data) {
+                    d3.json('api/streamwatch/country/popularity?' + serialize(params), function(err, data) {
                         (err) ? reject(err) : resolve(data);
                     });
                 })
@@ -102,6 +201,8 @@
             }
             
             function hideFooter () {
+                window.selectedCountry = null;
+                
                 $('#country-details').slideUp(400);
             }
             
@@ -182,7 +283,7 @@
             </form>
         </nav>
         <div id="search-results" class="list-group"></div>
-		<div class="map" id="map" style="margin-top: 50px;"></div>
+		<div class="map" id="map" style="margin-top: 40px;"></div>
         <div id="country-details" class="navbar navbar-default navbar-fixed-bottom" style="display: none;" >
             <div class="row">
                 <div class="col-md-4">
@@ -260,11 +361,11 @@
                     
                 </div>
                 
-                <div class="col-md-4">
+                <!--<div class="col-md-4">
                     <h1 style="text-align: center;">Listen to songs</h1>
                     <iframe width="auto" height="200" src="https://www.youtube.com/embed/_swivbEsD50" frameborder="0" allowfullscreen></iframe>
                     
-                </div>
+                </div>-->
             </div>
         </div>
         <script>
@@ -297,18 +398,13 @@
                     dotje.style.strokeWidth = "2px";
             }
         </script>
-
-        <div class="timeline-holder navbar navbar-default">
-            <div id ="timeline-div">
+            
+            <div id="timeslider-div" class="navbar navbar-default navbar-fixed-bottom" style="min-height: 40px; display: none;">
                 <input id="timeslider" type="text" 
-                      data-slider-min="0"
-                      data-slider-max="33"
-                      data-slider-step="1"
-                      data-slider-value="0" data-slider-enabled="false" />
-                <input id="timeslider-enabled" type="checkbox"/>
-                <span class="adjust-time" id="adjust-time">Adjust time variable</span>
-                <span id="datetext"></span>
+                data-slider-min="0"
+                data-slider-max="33"
+                data-slider-step="1"
+                data-slider-value="[0,33]" />
             </div>
-        </div>
 	</body>
 </html>
