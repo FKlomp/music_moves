@@ -85,17 +85,17 @@ SongChart.prototype.setData = function (data) {
     
     this.rects = this.chart.selectAll("rect")
         .data(this.data)
-        .attr("width", function (d) { return this.xScale(d[this.options.column]); }.bind(this))
         .attr("id", function (d) {
             return d.artist.name + "_" + d._id.song;
-        })
+        }) 
+        .attr("width", function (d) { return this.xScale(d[this.options.column]); }.bind(this))
         .enter()
         .append("rect")
-        .attr("id", function (d) {
-            return d.artist.name + "_" + d._id.song;
-        })
         .attr("x", this.options.x)
         .attr("y", function (d) { return this.options.y + this.yScale(this.options.unit(d)); }.bind(this))
+        .attr("id", function (d) {
+            return d.artist.name + "_" + d._id.song;
+        })  
         .attr("width", function (d) { return this.xScale(d[this.options.column]); }.bind(this))
         .attr("height", this.yScale.rangeBand())
         .attr("fill", "#5eb9c9")
