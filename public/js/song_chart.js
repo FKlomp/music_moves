@@ -90,10 +90,22 @@ SongChart.prototype.setData = function (data) {
         .append("rect")
         .attr("x", this.options.x)
         .attr("y", function (d) { return this.options.y + this.yScale(this.options.unit(d)); }.bind(this))
+        .attr("id", function (d) {
+            return d.artist.name + "_" + d._id.song;
+        })
         .attr("width", function (d) { return this.xScale(d[this.options.column]); }.bind(this))
         .attr("height", this.yScale.rangeBand())
         .attr("fill", "#5eb9c9")
         .on("mouseover", function(d) {
+            var id = d3.select(this).attr('id');
+            d3.json('https://api.spotify.com/v1/search?q=artist:' + id.split('_')[0] + ' track:' + id.split('_')[1] + '&type=track', function (data) {
+                if (data.tracks.items[0] && data.tracks.items[0].preview_url) {
+                    $('#spotify_audio').html('<source src="' + data.tracks.items[0].preview_url + '" type="audio/mpeg">')
+                    $('#spotify_audio')[0].load();
+                    $('#spotify_audio')[0].play();
+                }
+            });
+            
             d3.select(this)
                 .attr("fill", "#83C8D4");
         })
@@ -102,6 +114,9 @@ SongChart.prototype.setData = function (data) {
                 .transition()
                 .duration(250)
                 .attr("fill", "#5eb9c9");
+            
+            $('#spotify_audio')[0].pause();
+            $('#spotify_audio').html('');
         })
             
     this.titles = this.chart.selectAll(".bar_title")
