@@ -13,17 +13,20 @@ var removeResults = function (evt) {
 var SearchBar = function (options) {
     this.searchTypes = {
         COUNTRY: 0,
-        SONG: 1
+        EVENT: 1
     };
     
-    this.currentSong = null;
-    this.currentArtist = null;
+    this.currentCountry = null;
+    this.currentEvent = null;
     
     this.options = $.extend({
         selectedQueryType: this.searchTypes.COUNTRY,
         queryTypes: [{
             name: 'Country',
             url: 'api/country'
+        },{
+            name: 'Event',
+            url: 'api/event'
         }],
         onSubmit: function (evt) { console.log('onSubmit', evt); },
         onFilterUpdate: function (evt) { console.log('onFilterUpdate', evt); }
@@ -65,32 +68,6 @@ SearchBar.prototype.updateFilter = function (evt) {
     $('#filter-button').html(this.options.queryTypes[this.options.selectedQueryType].name + ' <span class="caret"></span>');
     
     this.options.onFilterUpdate(evt);
-    /*showLoader();
-    
-    if (this.options.selectedQueryType === this.searchTypes.SONG) {
-        url = 'api/streamwatch/song/country';
-    } else {
-        url = 'api/streamwatch/artist/country';
-    }
-    
-    var promise = new Promise(function(resolve, reject) {
-        d3.json(url, function(err, data) {
-            (err) ? reject(err) : resolve(data);
-        });
-    }).then(function (data) {
-        //map.reset();
-        
-        setTimeout(function () {
-            map.setData(data);
-        
-            hideLoader();
-        
-            map.drawLines();
-        }, 1000)
-        
-        setTimeout(map.update.bind(map), 1000)
-        setTimeout(map.hideLines.bind(map), 2000)
-    });*/
     
     this.buildDropDown();
 }
@@ -115,11 +92,10 @@ SearchBar.prototype.selectItem = function (evt) {
     
     document.removeEventListener('click', removeResults, true);
     
-    if (this.options.selectedQueryType === this.searchTypes.SONG) {
-        this.currentArtist = id.split('_')[0];
-        this.currentSong = id.split('_')[1];
+    if (this.options.selectedQueryType === this.searchTypes.COUNTRY) {
+        this.currentCountry = id;
     } else {
-        this.currentArtist = id;
+        this.currentEvent = id;
     }
     
     this.options.onSubmit(evt);
@@ -151,11 +127,11 @@ SearchBar.prototype.selectItem = function (evt) {
     }*/
 }
 
-SearchBar.prototype.showCountry = function (data) {
+SearchBar.prototype.showCountries = function (data) {
     var i;
-    console.log('data', data);
+    
     for (i = 0; i < data.length; i++) {
-        $('<button id="' + data[i].code + '_' + data[i].name + '" type="button" class="list-group-item">' +
+        $('<button id="' + data[i].code + '" type="button" class="list-group-item">' +
             data[i].name + ' - ' + data[i].code +
             '</button>')
         .hide()
@@ -164,12 +140,12 @@ SearchBar.prototype.showCountry = function (data) {
     }
 }
 
-SearchBar.prototype.showArtists = function (data) {
+SearchBar.prototype.showEvents = function (data) {
     var i;
     
     for (i = 0; i < data.length; i++) {
-        $('<button id="' + data[i].mbId + '" type="button" class="list-group-item">' +
-            data[i].lastfm_info.artist.name +
+        $('<button id="' + data[i].code + '" type="button" class="list-group-item">' +
+            data[i].name + ' - ' + data[i].code +
             '</button>')
         .hide()
         .appendTo('#search-results')
@@ -206,9 +182,9 @@ SearchBar.prototype.submit = function (evt) {
     $.get(this.options.queryTypes[this.options.selectedQueryType].url, { q: query })
     .done(function (data) {
         if (this.options.selectedQueryType === this.searchTypes.COUNTRY) {
-            this.showCountry(data);
+            this.showCountries(data);
         } else {
-            this.showArtists(data);
+            this.showEvents(data);
         }
         
         document.addEventListener('click', removeResults, true);

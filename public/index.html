@@ -80,16 +80,16 @@
                             (err) ? reject(err) : resolve(data);
                         });
                     }),
-                    // new Promise(function(resolve, reject) {
-                    //     d3.json('/api/streamwatch/artist/monthly/dates', function(err, data) {
-                    //         (err) ? reject(err) : resolve(data);
-                    //     });
-                    // })
+                    new Promise(function(resolve, reject) {
+                        d3.json('/api/mentions/daterange', function(err, data) {
+                            (err) ? reject(err) : resolve(data);
+                        });
+                    })
                 ]
                 
                 Promise.all(requests).then(function (data) {
                     loadMap(data[0]);
-                    // timeLine.setSlider([data[1][0].min, data[1][0].max]);
+                    timeLine.setSlider([data[1][0].min, data[1][0].max]);
                 });
             }
             
@@ -104,17 +104,17 @@
             }
             
             function updateAll () {
-                if (searchBar.currentArtist == null) {
+                if (searchBar.currentEvent == null) {
                     $('#plan-tour-button')
                         .html('Start tour')
                         .attr('disabled', 'disabled');
                     $('#tour-details').slideUp(400);
                     map.hideTour();
                 }
-                
+
                 var months = timeLine.getMonths();
                 updateMap(months[0], months[1]);
-                
+
                 if (window.selectedCountry !== null) {
                     updateFooter(months[0], months[1]);
                 }
@@ -257,8 +257,8 @@
 	<body>
         <audio id="spotify_audio"></audio>
         <div id="splashscreen">
-            <h1>MusicMoves</h1>
-            <h2>Explore the worldwide movement of artists and songs from Amsterdam</h2>
+            <h1>Tragic World Map</h1>
+            <h2>Feel the tragic, book a tour</h2>
             <a id="start-button" class="ghost-button" type="button">START</a>
         </div>
         <div id="loader" style="text-align: center; display: none;">

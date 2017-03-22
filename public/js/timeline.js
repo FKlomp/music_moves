@@ -41,8 +41,9 @@ TimeLine.prototype.updateLabel = function () {
 }
 
 TimeLine.prototype.setSlider = function (data) {
-    this.minDate = new Date(data[0]);
-    this.maxDate = new Date(data[1]);
+    this.minDate = new Date(data[0].substring(0, 4), (parseInt(data[0].substring(4, 6)) - 1), data[0].substring(6, 8));
+    this.maxDate = new Date(data[1].substring(0, 4), (parseInt(data[1].substring(4, 6)) - 1), data[1].substring(6, 8));
+    
     this.count = this.getMonthCount(this.minDate, this.maxDate);
     
     this.slider = new Slider("#timeslider", {

@@ -361,33 +361,34 @@ var Server = {
                     }
                 });
             });
+        }.bind(this));
+        
+        app.get('/api/mentions/daterange', function (req, res) {
             
-            // var match = {},
-            //     aggregate = [{
-            //         $group: { _id: "$country", count: { $sum: "$count" }, population: { $first: "$population" }}
-            //     }];
-            //
-            // if (req.query.mbId) {
-            //     match.mbId = req.query.mbId;
-            // } else if (this.online) {
-            //     match.mbId = { $in: this.artistIds };
-            // }
-            //
-            // if (Object.keys(match).length > 0) {
-            //     aggregate.unshift({
-            //         $match: match
-            //     });
-            // }
-            //
-            // this.mongoDB.collection('artist_stats_geo', function(err, collection) {
-            //     if(err) res.send(err);
-            //
-            //     collection.aggregate(aggregate).toArray(function(err, docs) {
-            //         if(err) res.send(err);
-            //
-            //         res.json(docs);
-            //     });
-            // }.bind(this));
+            this.conn.createStatement(function(err, statement) {
+                if (err) res.send(err);
+                
+                statement.setFetchSize(10, function(err) {
+                    if (err) {
+                        callback(err);
+                    } else {
+                        var query = 'SELECT MIN(mentiontimedate) as min, MAX(mentiontimedate) as max ' + 
+                                    'FROM mentions';
+                        
+                        statement.executeQuery(query,
+                            function(err, resultset) {
+                                if (err) {
+                                    res.send(err)
+                                } else {
+                                    resultset.toObjArray(function(err, results) {
+                                        res.json(results);
+                                    });
+                                }
+                            }
+                        );
+                    }
+                });
+            });
         }.bind(this));
         
         app.get('/api/country', function (req, res) {
@@ -402,17 +403,49 @@ var Server = {
                         var query;
                         
                         if (req.query.q) {
-                            query = 'SELECT mentions.fipscountrycode as code, mentions.countryhumanname as name ' +
-                                    'FROM mentions ' +
-                                    "WHERE mentions.countryhumanname LIKE '%" + req.query.q.trim() + "%' " +
-                                    'GROUP BY mentions.fipscountrycode, mentions.countryhumanname'
+                            query = 'SELECT domaincount.fipscountrycode as code, domaincount.countryhumanname as name ' +
+                                    'FROM domaincount ' +
+                                    "WHERE domaincount.countryhumanname LIKE '%" + req.query.q.trim() + "%'";
                         } else {
-                            query = 'SELECT mentions.fipscountrycode as code, mentions.countryhumanname as name ' +
-                                    'FROM mentions ' +
-                                    'GROUP BY mentions.fipscountrycode, mentions.countryhumanname';
+                            query = 'SELECT domaincount.fipscountrycode as code, domaincount.countryhumanname as name ' +
+                                    'FROM domaincount';
                         }
                         
-                        console.log('query', query);
+                        statement.executeQuery(query,
+                            function(err, resultset) {
+                                if (err) {
+                                    res.send(err)
+                                } else {
+                                    resultset.toObjArray(function(err, results) {
+                                        res.json(results);
+                                    });
+                                }
+                            }
+                        );
+                    }
+                });
+            });
+        }.bind(this));
+        
+        app.get('/api/event', function (req, res) {
+            
+            this.conn.createStatement(function(err, statement) {
+                if (err) res.send(err);
+                
+                statement.setFetchSize(10, function(err) {
+                    if (err) {
+                        callback(err);
+                    } else {
+                        var query;
+                        
+                        if (req.query.q) {
+                            query = 'SELECT cameo.eventcode as code, cameo.description as name ' +
+                                    'FROM cameo ' +
+                                    "WHERE cameo.description LIKE '%" + req.query.q.trim() + "%'"
+                        } else {
+                            query = 'SELECT cameo.eventcode as code, cameo.description as name ' +
+                                    'FROM cameo ';
+                        }
                         
                         statement.executeQuery(query,
                             function(err, resultset) {
