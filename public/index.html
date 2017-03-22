@@ -76,20 +76,20 @@
             function ready () {
                 var requests = [
                     new Promise(function(resolve, reject) {
-                        d3.json('api/streamwatch/artist/country', function(err, data) {
+                        d3.json('/api/mentions/country', function(err, data) {
                             (err) ? reject(err) : resolve(data);
                         });
                     }),
-                    new Promise(function(resolve, reject) {
-                        d3.json('/api/streamwatch/artist/monthly/dates', function(err, data) {
-                            (err) ? reject(err) : resolve(data);
-                        });
-                    })
+                    // new Promise(function(resolve, reject) {
+                    //     d3.json('/api/streamwatch/artist/monthly/dates', function(err, data) {
+                    //         (err) ? reject(err) : resolve(data);
+                    //     });
+                    // })
                 ]
                 
                 Promise.all(requests).then(function (data) {
                     loadMap(data[0]);
-                    timeLine.setSlider([data[1][0].min, data[1][0].max]);
+                    // timeLine.setSlider([data[1][0].min, data[1][0].max]);
                 });
             }
             

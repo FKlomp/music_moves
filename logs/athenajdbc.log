@@ -1,0 +1,1379 @@
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+ERROR - Failed to run query: com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.AmazonAthenaException: User: arn:aws:iam::291838259228:user/fklomp is not authorized to perform: athena:RunQuery (Service: AmazonAthena; Status Code: 400; Error Code: AccessDeniedException; Request ID: f63a7c4c-0e2b-11e7-a29d-d17b7d06f6d3)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+
+com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.AmazonAthenaException: User: arn:aws:iam::291838259228:user/fklomp is not authorized to perform: athena:RunQuery (Service: AmazonAthena; Status Code: 400; Error Code: AccessDeniedException; Request ID: f63a7c4c-0e2b-11e7-a29d-d17b7d06f6d3)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+ERROR - Failed to run query: com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.InternalServerException: An internal server error occurred (Service: AmazonAthena; Status Code: 500; Error Code: InternalServerException; Request ID: 3d3765a9-0e2c-11e7-9d64-77931bf084c4)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+
+com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.InternalServerException: An internal server error occurred (Service: AmazonAthena; Status Code: 500; Error Code: InternalServerException; Request ID: 3d3765a9-0e2c-11e7-9d64-77931bf084c4)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+ERROR - Failed to run query: com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.InternalServerException: An internal server error occurred (Service: AmazonAthena; Status Code: 500; Error Code: InternalServerException; Request ID: 5cf21c06-0e2c-11e7-a482-0d7f36d95ae4)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+
+com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.InternalServerException: An internal server error occurred (Service: AmazonAthena; Status Code: 500; Error Code: InternalServerException; Request ID: 5cf21c06-0e2c-11e7-a482-0d7f36d95ae4)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+ERROR - Failed to run query: com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.InternalServerException: An internal server error occurred (Service: AmazonAthena; Status Code: 500; Error Code: InternalServerException; Request ID: 9288acc1-0e2c-11e7-bf65-9b48cfcfb1a4)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+
+com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.model.InternalServerException: An internal server error occurred (Service: AmazonAthena; Status Code: 500; Error Code: InternalServerException; Request ID: 9288acc1-0e2c-11e7-bf65-9b48cfcfb1a4)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1530)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1168)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:949)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:662)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:636)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:619)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$300(AmazonHttpClient.java:587)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:574)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:446)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.doInvoke(AmazonAthenaClient.java:941)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.invoke(AmazonAthenaClient.java:917)
+	at com.amazonaws.athena.jdbc.shaded.com.amazonaws.services.athena.AmazonAthenaClient.runQuery(AmazonAthenaClient.java:806)
+	at com.amazonaws.athena.jdbc.AthenaServiceClient.runQuery(AthenaServiceClient.java:159)
+	at com.amazonaws.athena.jdbc.AthenaQueryExecutor.startQuery(AthenaQueryExecutor.java:34)
+	at com.amazonaws.athena.jdbc.AthenaConnection.startQuery(AthenaConnection.java:574)
+	at com.amazonaws.athena.jdbc.AthenaStatement.execute(AthenaStatement.java:204)
+	at com.amazonaws.athena.jdbc.AthenaStatement.executeQuery(AthenaStatement.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events;' with Execution ID: 3e298a69-a60e-4faa-a1db-ac5d7a633c2e
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1603 ms
+DEBUG - Event Message: Checking Query Status : 1603 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1737 ms
+DEBUG - Event Message: Sleeping until we retry. : 1737 ms
+DEBUG - Event Message: Checking Query Status : 1940 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2051 ms
+DEBUG - Event Message: Sleeping until we retry. : 2051 ms
+DEBUG - Event Message: Checking Query Status : 2254 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2389 ms
+DEBUG - Event Message: Sleeping until we retry. : 2389 ms
+DEBUG - Event Message: Checking Query Status : 2591 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2708 ms
+DEBUG - Event Message: Sleeping until we retry. : 2708 ms
+DEBUG - Event Message: Checking Query Status : 2910 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3077 ms
+DEBUG - Event Message: Sleeping until we retry. : 3077 ms
+DEBUG - Event Message: Checking Query Status : 3280 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3396 ms
+DEBUG - Event Message: Sleeping until we retry. : 3396 ms
+DEBUG - Event Message: Checking Query Status : 3601 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3808 ms
+DEBUG - Event Message: Sleeping until we retry. : 3808 ms
+DEBUG - Event Message: Checking Query Status : 4013 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4118 ms
+DEBUG - Event Message: Sleeping until we retry. : 4119 ms
+DEBUG - Event Message: Checking Query Status : 4320 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4430 ms
+DEBUG - Event Message: Sleeping until we retry. : 4430 ms
+DEBUG - Event Message: Checking Query Status : 4634 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4799 ms
+DEBUG - Event Message: Sleeping until we retry. : 4799 ms
+DEBUG - Event Message: Checking Query Status : 5000 ms
+DEBUG - Event Message: Finishing Checking Query Status : 5229 ms
+DEBUG - Event Message: Sleeping until we retry. : 5229 ms
+DEBUG - Event Message: Checking Query Status : 5429 ms
+DEBUG - Event Message: Finishing Checking Query Status : 5555 ms
+DEBUG - Event Message: Query has Completed. : 5555 ms
+DEBUG - Event Message: Finished creating Result Set. : 6269 ms
+DEBUG - Event Message: Finished Executing query : 6269 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events;' with Execution ID: 217da3b1-b3e9-497e-b1fa-d5f7305d6966
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1409 ms
+DEBUG - Event Message: Checking Query Status : 1409 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1558 ms
+DEBUG - Event Message: Sleeping until we retry. : 1558 ms
+DEBUG - Event Message: Checking Query Status : 1762 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1895 ms
+DEBUG - Event Message: Sleeping until we retry. : 1895 ms
+DEBUG - Event Message: Checking Query Status : 2098 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2675 ms
+DEBUG - Event Message: Sleeping until we retry. : 2675 ms
+DEBUG - Event Message: Checking Query Status : 2880 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2994 ms
+DEBUG - Event Message: Sleeping until we retry. : 2994 ms
+DEBUG - Event Message: Checking Query Status : 3198 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3355 ms
+DEBUG - Event Message: Sleeping until we retry. : 3355 ms
+DEBUG - Event Message: Checking Query Status : 3555 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3676 ms
+DEBUG - Event Message: Sleeping until we retry. : 3676 ms
+DEBUG - Event Message: Checking Query Status : 3880 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3993 ms
+DEBUG - Event Message: Sleeping until we retry. : 3993 ms
+DEBUG - Event Message: Checking Query Status : 4194 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4319 ms
+DEBUG - Event Message: Sleeping until we retry. : 4319 ms
+DEBUG - Event Message: Checking Query Status : 4523 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4709 ms
+DEBUG - Event Message: Query has Completed. : 4709 ms
+DEBUG - Event Message: Finished creating Result Set. : 5130 ms
+DEBUG - Event Message: Finished Executing query : 5130 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events;' with Execution ID: cb921523-9897-48c3-9042-a161a00d8c3c
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1300 ms
+DEBUG - Event Message: Checking Query Status : 1300 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1414 ms
+DEBUG - Event Message: Sleeping until we retry. : 1414 ms
+DEBUG - Event Message: Checking Query Status : 1614 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1723 ms
+DEBUG - Event Message: Sleeping until we retry. : 1723 ms
+DEBUG - Event Message: Checking Query Status : 1928 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2076 ms
+DEBUG - Event Message: Sleeping until we retry. : 2076 ms
+DEBUG - Event Message: Checking Query Status : 2278 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2391 ms
+DEBUG - Event Message: Sleeping until we retry. : 2391 ms
+DEBUG - Event Message: Checking Query Status : 2593 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2733 ms
+DEBUG - Event Message: Sleeping until we retry. : 2733 ms
+DEBUG - Event Message: Checking Query Status : 2938 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3060 ms
+DEBUG - Event Message: Sleeping until we retry. : 3060 ms
+DEBUG - Event Message: Checking Query Status : 3263 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3546 ms
+DEBUG - Event Message: Sleeping until we retry. : 3546 ms
+DEBUG - Event Message: Checking Query Status : 3750 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3901 ms
+DEBUG - Event Message: Sleeping until we retry. : 3901 ms
+DEBUG - Event Message: Checking Query Status : 4103 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4232 ms
+DEBUG - Event Message: Query has Completed. : 4232 ms
+DEBUG - Event Message: Finished creating Result Set. : 5794 ms
+DEBUG - Event Message: Finished Executing query : 5794 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events;' with Execution ID: 0518fe96-33e4-479f-9ea4-10a8910dd158
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1129 ms
+DEBUG - Event Message: Checking Query Status : 1129 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1261 ms
+DEBUG - Event Message: Sleeping until we retry. : 1261 ms
+DEBUG - Event Message: Checking Query Status : 1462 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1575 ms
+DEBUG - Event Message: Sleeping until we retry. : 1575 ms
+DEBUG - Event Message: Checking Query Status : 1778 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1943 ms
+DEBUG - Event Message: Sleeping until we retry. : 1943 ms
+DEBUG - Event Message: Checking Query Status : 2147 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2250 ms
+DEBUG - Event Message: Sleeping until we retry. : 2250 ms
+DEBUG - Event Message: Checking Query Status : 2453 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2565 ms
+DEBUG - Event Message: Sleeping until we retry. : 2565 ms
+DEBUG - Event Message: Checking Query Status : 2766 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2933 ms
+DEBUG - Event Message: Sleeping until we retry. : 2933 ms
+DEBUG - Event Message: Checking Query Status : 3136 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3249 ms
+DEBUG - Event Message: Sleeping until we retry. : 3249 ms
+DEBUG - Event Message: Checking Query Status : 3453 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3557 ms
+DEBUG - Event Message: Sleeping until we retry. : 3557 ms
+DEBUG - Event Message: Checking Query Status : 3759 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3860 ms
+DEBUG - Event Message: Sleeping until we retry. : 3860 ms
+DEBUG - Event Message: Checking Query Status : 4063 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4266 ms
+DEBUG - Event Message: Query has Completed. : 4266 ms
+DEBUG - Event Message: Finished creating Result Set. : 5144 ms
+DEBUG - Event Message: Finished Executing query : 5144 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events;' with Execution ID: 9edc615d-a800-4f96-8061-8f68d2ca7c81
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1504 ms
+DEBUG - Event Message: Checking Query Status : 1504 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1623 ms
+DEBUG - Event Message: Sleeping until we retry. : 1623 ms
+DEBUG - Event Message: Checking Query Status : 1826 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1950 ms
+DEBUG - Event Message: Sleeping until we retry. : 1950 ms
+DEBUG - Event Message: Checking Query Status : 2151 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2261 ms
+DEBUG - Event Message: Sleeping until we retry. : 2261 ms
+DEBUG - Event Message: Checking Query Status : 2464 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2579 ms
+DEBUG - Event Message: Sleeping until we retry. : 2579 ms
+DEBUG - Event Message: Checking Query Status : 2780 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2884 ms
+DEBUG - Event Message: Sleeping until we retry. : 2884 ms
+DEBUG - Event Message: Checking Query Status : 3086 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3188 ms
+DEBUG - Event Message: Sleeping until we retry. : 3188 ms
+DEBUG - Event Message: Checking Query Status : 3393 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3494 ms
+DEBUG - Event Message: Sleeping until we retry. : 3494 ms
+DEBUG - Event Message: Checking Query Status : 3697 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3797 ms
+DEBUG - Event Message: Sleeping until we retry. : 3797 ms
+DEBUG - Event Message: Checking Query Status : 4001 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4102 ms
+DEBUG - Event Message: Sleeping until we retry. : 4102 ms
+DEBUG - Event Message: Checking Query Status : 4306 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4423 ms
+DEBUG - Event Message: Sleeping until we retry. : 4423 ms
+DEBUG - Event Message: Checking Query Status : 4624 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4724 ms
+DEBUG - Event Message: Query has Completed. : 4724 ms
+DEBUG - Event Message: Finished creating Result Set. : 5196 ms
+DEBUG - Event Message: Finished Executing query : 5196 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events;' with Execution ID: b1c93b46-f983-4809-97fe-ac31e62edc5d
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1401 ms
+DEBUG - Event Message: Checking Query Status : 1401 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1529 ms
+DEBUG - Event Message: Sleeping until we retry. : 1529 ms
+DEBUG - Event Message: Checking Query Status : 1732 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1834 ms
+DEBUG - Event Message: Sleeping until we retry. : 1834 ms
+DEBUG - Event Message: Checking Query Status : 2039 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2198 ms
+DEBUG - Event Message: Sleeping until we retry. : 2198 ms
+DEBUG - Event Message: Checking Query Status : 2399 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2504 ms
+DEBUG - Event Message: Sleeping until we retry. : 2504 ms
+DEBUG - Event Message: Checking Query Status : 2706 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2810 ms
+DEBUG - Event Message: Sleeping until we retry. : 2810 ms
+DEBUG - Event Message: Checking Query Status : 3013 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3115 ms
+DEBUG - Event Message: Sleeping until we retry. : 3115 ms
+DEBUG - Event Message: Checking Query Status : 3319 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3422 ms
+DEBUG - Event Message: Sleeping until we retry. : 3422 ms
+DEBUG - Event Message: Checking Query Status : 3627 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3729 ms
+DEBUG - Event Message: Sleeping until we retry. : 3729 ms
+DEBUG - Event Message: Checking Query Status : 3933 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4086 ms
+DEBUG - Event Message: Sleeping until we retry. : 4086 ms
+DEBUG - Event Message: Checking Query Status : 4290 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4399 ms
+DEBUG - Event Message: Sleeping until we retry. : 4399 ms
+DEBUG - Event Message: Checking Query Status : 4603 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4709 ms
+DEBUG - Event Message: Query has Completed. : 4709 ms
+DEBUG - Event Message: Finished creating Result Set. : 5195 ms
+DEBUG - Event Message: Finished Executing query : 5195 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events LIMIT 1;' with Execution ID: 71c8a1f4-6987-414a-b399-2b826e231eaf
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1538 ms
+DEBUG - Event Message: Checking Query Status : 1538 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1646 ms
+DEBUG - Event Message: Sleeping until we retry. : 1646 ms
+DEBUG - Event Message: Checking Query Status : 1850 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1951 ms
+DEBUG - Event Message: Sleeping until we retry. : 1951 ms
+DEBUG - Event Message: Checking Query Status : 2156 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2266 ms
+DEBUG - Event Message: Sleeping until we retry. : 2266 ms
+DEBUG - Event Message: Checking Query Status : 2470 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2571 ms
+DEBUG - Event Message: Sleeping until we retry. : 2571 ms
+DEBUG - Event Message: Checking Query Status : 2775 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2880 ms
+DEBUG - Event Message: Sleeping until we retry. : 2880 ms
+DEBUG - Event Message: Checking Query Status : 3085 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3188 ms
+DEBUG - Event Message: Sleeping until we retry. : 3188 ms
+DEBUG - Event Message: Checking Query Status : 3393 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3494 ms
+DEBUG - Event Message: Query has Completed. : 3494 ms
+DEBUG - Event Message: Finished creating Result Set. : 3885 ms
+DEBUG - Event Message: Finished Executing query : 3885 ms
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Next Called : 409 ms
+DEBUG - Event Message: Next Called : 415 ms
+DEBUG - Event Message: No more rows available to obtain. Finishing. : 415 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events LIMIT 1;' with Execution ID: eba221ee-124a-4c00-b8b7-53fffeed9dcb
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 884 ms
+DEBUG - Event Message: Checking Query Status : 884 ms
+DEBUG - Event Message: Finishing Checking Query Status : 992 ms
+DEBUG - Event Message: Sleeping until we retry. : 992 ms
+DEBUG - Event Message: Checking Query Status : 1196 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1297 ms
+DEBUG - Event Message: Sleeping until we retry. : 1297 ms
+DEBUG - Event Message: Checking Query Status : 1501 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1602 ms
+DEBUG - Event Message: Query has Completed. : 1602 ms
+DEBUG - Event Message: Finished creating Result Set. : 1988 ms
+DEBUG - Event Message: Finished Executing query : 1988 ms
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Next Called : 401 ms
+DEBUG - Event Message: Next Called : 406 ms
+DEBUG - Event Message: No more rows available to obtain. Finishing. : 406 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT * FROM events LIMIT 1;' with Execution ID: 106731c3-b6c6-4349-917e-5309f1db2dd9
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 908 ms
+DEBUG - Event Message: Checking Query Status : 908 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1016 ms
+DEBUG - Event Message: Sleeping until we retry. : 1016 ms
+DEBUG - Event Message: Checking Query Status : 1217 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1321 ms
+DEBUG - Event Message: Sleeping until we retry. : 1321 ms
+DEBUG - Event Message: Checking Query Status : 1526 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1625 ms
+DEBUG - Event Message: Sleeping until we retry. : 1625 ms
+DEBUG - Event Message: Checking Query Status : 1829 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1930 ms
+DEBUG - Event Message: Query has Completed. : 1930 ms
+DEBUG - Event Message: Finished creating Result Set. : 2363 ms
+DEBUG - Event Message: Finished Executing query : 2363 ms
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Next Called : 451 ms
+DEBUG - Event Message: Next Called : 457 ms
+DEBUG - Event Message: No more rows available to obtain. Finishing. : 457 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT mentions.fipscountrycode, COUNT(*) as count FROM mentions GROUP BY mentions.fipscountrycode' with Execution ID: 9b33143a-5585-4efd-a0d8-6888966361ed
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1336 ms
+DEBUG - Event Message: Checking Query Status : 1336 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1463 ms
+DEBUG - Event Message: Sleeping until we retry. : 1463 ms
+DEBUG - Event Message: Checking Query Status : 1665 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1818 ms
+DEBUG - Event Message: Sleeping until we retry. : 1818 ms
+DEBUG - Event Message: Checking Query Status : 2019 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2155 ms
+DEBUG - Event Message: Sleeping until we retry. : 2155 ms
+DEBUG - Event Message: Checking Query Status : 2358 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2547 ms
+DEBUG - Event Message: Sleeping until we retry. : 2547 ms
+DEBUG - Event Message: Checking Query Status : 2750 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2885 ms
+DEBUG - Event Message: Sleeping until we retry. : 2885 ms
+DEBUG - Event Message: Checking Query Status : 3087 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3189 ms
+DEBUG - Event Message: Sleeping until we retry. : 3189 ms
+DEBUG - Event Message: Checking Query Status : 3392 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3496 ms
+DEBUG - Event Message: Sleeping until we retry. : 3496 ms
+DEBUG - Event Message: Checking Query Status : 3699 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3799 ms
+DEBUG - Event Message: Sleeping until we retry. : 3799 ms
+DEBUG - Event Message: Checking Query Status : 4001 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4118 ms
+DEBUG - Event Message: Sleeping until we retry. : 4118 ms
+DEBUG - Event Message: Checking Query Status : 4322 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4423 ms
+DEBUG - Event Message: Query has Completed. : 4423 ms
+DEBUG - Event Message: Finished creating Result Set. : 4791 ms
+DEBUG - Event Message: Finished Executing query : 4791 ms
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Next Called : 394 ms
+DEBUG - Event Message: Next Called : 394 ms
+DEBUG - Event Message: Next Called : 394 ms
+DEBUG - Event Message: Next Called : 395 ms
+DEBUG - Event Message: Next Called : 395 ms
+DEBUG - Event Message: Next Called : 395 ms
+DEBUG - Event Message: Next Called : 395 ms
+DEBUG - Event Message: Next Called : 396 ms
+DEBUG - Event Message: Next Called : 396 ms
+DEBUG - Event Message: Next Called : 397 ms
+DEBUG - Event Message: Fetching next batch of rows. : 397 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 636 ms
+DEBUG - Event Message: Next Called : 637 ms
+DEBUG - Event Message: Next Called : 637 ms
+DEBUG - Event Message: Next Called : 638 ms
+DEBUG - Event Message: Next Called : 638 ms
+DEBUG - Event Message: Next Called : 639 ms
+DEBUG - Event Message: Next Called : 640 ms
+DEBUG - Event Message: Next Called : 640 ms
+DEBUG - Event Message: Next Called : 641 ms
+DEBUG - Event Message: Next Called : 642 ms
+DEBUG - Event Message: Next Called : 642 ms
+DEBUG - Event Message: Fetching next batch of rows. : 642 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 936 ms
+DEBUG - Event Message: Next Called : 937 ms
+DEBUG - Event Message: Next Called : 937 ms
+DEBUG - Event Message: Next Called : 937 ms
+DEBUG - Event Message: Next Called : 938 ms
+DEBUG - Event Message: Next Called : 938 ms
+DEBUG - Event Message: Next Called : 938 ms
+DEBUG - Event Message: Next Called : 938 ms
+DEBUG - Event Message: Next Called : 939 ms
+DEBUG - Event Message: Next Called : 939 ms
+DEBUG - Event Message: Next Called : 939 ms
+DEBUG - Event Message: Fetching next batch of rows. : 939 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 1164 ms
+DEBUG - Event Message: Next Called : 1165 ms
+DEBUG - Event Message: Next Called : 1165 ms
+DEBUG - Event Message: Next Called : 1165 ms
+DEBUG - Event Message: Next Called : 1166 ms
+DEBUG - Event Message: Next Called : 1166 ms
+DEBUG - Event Message: Next Called : 1166 ms
+DEBUG - Event Message: Next Called : 1167 ms
+DEBUG - Event Message: Next Called : 1167 ms
+DEBUG - Event Message: Next Called : 1167 ms
+DEBUG - Event Message: Next Called : 1167 ms
+DEBUG - Event Message: Fetching next batch of rows. : 1167 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 1529 ms
+DEBUG - Event Message: Next Called : 1529 ms
+DEBUG - Event Message: Next Called : 1529 ms
+DEBUG - Event Message: Next Called : 1530 ms
+DEBUG - Event Message: Next Called : 1530 ms
+DEBUG - Event Message: Next Called : 1530 ms
+DEBUG - Event Message: Next Called : 1531 ms
+DEBUG - Event Message: Next Called : 1531 ms
+DEBUG - Event Message: Next Called : 1531 ms
+DEBUG - Event Message: Next Called : 1532 ms
+DEBUG - Event Message: Next Called : 1532 ms
+DEBUG - Event Message: Fetching next batch of rows. : 1532 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2010 ms
+DEBUG - Event Message: Next Called : 2010 ms
+DEBUG - Event Message: Next Called : 2010 ms
+DEBUG - Event Message: Next Called : 2011 ms
+DEBUG - Event Message: Next Called : 2011 ms
+DEBUG - Event Message: Next Called : 2011 ms
+DEBUG - Event Message: Next Called : 2012 ms
+DEBUG - Event Message: Next Called : 2012 ms
+DEBUG - Event Message: Next Called : 2012 ms
+DEBUG - Event Message: Next Called : 2012 ms
+DEBUG - Event Message: Next Called : 2012 ms
+DEBUG - Event Message: Fetching next batch of rows. : 2012 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2332 ms
+DEBUG - Event Message: Next Called : 2333 ms
+DEBUG - Event Message: Next Called : 2333 ms
+DEBUG - Event Message: Next Called : 2334 ms
+DEBUG - Event Message: Next Called : 2334 ms
+DEBUG - Event Message: Next Called : 2334 ms
+DEBUG - Event Message: Next Called : 2334 ms
+DEBUG - Event Message: Next Called : 2335 ms
+DEBUG - Event Message: Next Called : 2336 ms
+DEBUG - Event Message: Next Called : 2336 ms
+DEBUG - Event Message: Next Called : 2336 ms
+DEBUG - Event Message: Fetching next batch of rows. : 2336 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2594 ms
+DEBUG - Event Message: Next Called : 2594 ms
+DEBUG - Event Message: Next Called : 2595 ms
+DEBUG - Event Message: Next Called : 2595 ms
+DEBUG - Event Message: Next Called : 2595 ms
+DEBUG - Event Message: Next Called : 2595 ms
+DEBUG - Event Message: Next Called : 2596 ms
+DEBUG - Event Message: Next Called : 2596 ms
+DEBUG - Event Message: Next Called : 2596 ms
+DEBUG - Event Message: Next Called : 2596 ms
+DEBUG - Event Message: Next Called : 2596 ms
+DEBUG - Event Message: Fetching next batch of rows. : 2596 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2837 ms
+DEBUG - Event Message: Next Called : 2838 ms
+DEBUG - Event Message: Next Called : 2838 ms
+DEBUG - Event Message: No more rows available to obtain. Finishing. : 2838 ms
+INFO - Executing Query 'SELECT mentions.fipscountrycode, COUNT(*) as count FROM mentions GROUP BY mentions.fipscountrycode' with Execution ID: a5d7c81c-d7ab-403c-afd5-5f10deb78ef9
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1466 ms
+DEBUG - Event Message: Checking Query Status : 1466 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1597 ms
+DEBUG - Event Message: Sleeping until we retry. : 1597 ms
+DEBUG - Event Message: Checking Query Status : 1801 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1941 ms
+DEBUG - Event Message: Sleeping until we retry. : 1941 ms
+DEBUG - Event Message: Checking Query Status : 2143 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2263 ms
+DEBUG - Event Message: Sleeping until we retry. : 2263 ms
+DEBUG - Event Message: Checking Query Status : 2463 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2564 ms
+DEBUG - Event Message: Sleeping until we retry. : 2564 ms
+DEBUG - Event Message: Checking Query Status : 2767 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2886 ms
+DEBUG - Event Message: Sleeping until we retry. : 2886 ms
+DEBUG - Event Message: Checking Query Status : 3088 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3195 ms
+DEBUG - Event Message: Sleeping until we retry. : 3195 ms
+DEBUG - Event Message: Checking Query Status : 3395 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3496 ms
+DEBUG - Event Message: Sleeping until we retry. : 3496 ms
+DEBUG - Event Message: Checking Query Status : 3701 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3825 ms
+DEBUG - Event Message: Sleeping until we retry. : 3825 ms
+DEBUG - Event Message: Checking Query Status : 4028 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4225 ms
+DEBUG - Event Message: Sleeping until we retry. : 4225 ms
+DEBUG - Event Message: Checking Query Status : 4428 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4533 ms
+DEBUG - Event Message: Query has Completed. : 4533 ms
+DEBUG - Event Message: Finished creating Result Set. : 5542 ms
+DEBUG - Event Message: Finished Executing query : 5542 ms
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Next Called : 1014 ms
+DEBUG - Event Message: Next Called : 1015 ms
+DEBUG - Event Message: Next Called : 1015 ms
+DEBUG - Event Message: Next Called : 1015 ms
+DEBUG - Event Message: Next Called : 1015 ms
+DEBUG - Event Message: Next Called : 1016 ms
+DEBUG - Event Message: Next Called : 1016 ms
+DEBUG - Event Message: Next Called : 1016 ms
+DEBUG - Event Message: Next Called : 1016 ms
+DEBUG - Event Message: Next Called : 1016 ms
+DEBUG - Event Message: Fetching next batch of rows. : 1016 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 1633 ms
+DEBUG - Event Message: Next Called : 1634 ms
+DEBUG - Event Message: Next Called : 1634 ms
+DEBUG - Event Message: Next Called : 1634 ms
+DEBUG - Event Message: Next Called : 1634 ms
+DEBUG - Event Message: Next Called : 1635 ms
+DEBUG - Event Message: Next Called : 1635 ms
+DEBUG - Event Message: Next Called : 1635 ms
+DEBUG - Event Message: Next Called : 1635 ms
+DEBUG - Event Message: Next Called : 1636 ms
+DEBUG - Event Message: Next Called : 1636 ms
+DEBUG - Event Message: Fetching next batch of rows. : 1636 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 1863 ms
+DEBUG - Event Message: Next Called : 1864 ms
+DEBUG - Event Message: Next Called : 1864 ms
+DEBUG - Event Message: Next Called : 1864 ms
+DEBUG - Event Message: Next Called : 1865 ms
+DEBUG - Event Message: Next Called : 1865 ms
+DEBUG - Event Message: Next Called : 1865 ms
+DEBUG - Event Message: Next Called : 1866 ms
+DEBUG - Event Message: Next Called : 1866 ms
+DEBUG - Event Message: Next Called : 1867 ms
+DEBUG - Event Message: Next Called : 1867 ms
+DEBUG - Event Message: Fetching next batch of rows. : 1867 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2469 ms
+DEBUG - Event Message: Next Called : 2470 ms
+DEBUG - Event Message: Next Called : 2470 ms
+DEBUG - Event Message: Next Called : 2470 ms
+DEBUG - Event Message: Next Called : 2471 ms
+DEBUG - Event Message: Next Called : 2471 ms
+DEBUG - Event Message: Next Called : 2471 ms
+DEBUG - Event Message: Next Called : 2471 ms
+DEBUG - Event Message: Next Called : 2472 ms
+DEBUG - Event Message: Next Called : 2472 ms
+DEBUG - Event Message: Next Called : 2472 ms
+DEBUG - Event Message: Fetching next batch of rows. : 2472 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2993 ms
+DEBUG - Event Message: Next Called : 2994 ms
+DEBUG - Event Message: Next Called : 2995 ms
+DEBUG - Event Message: Next Called : 2996 ms
+DEBUG - Event Message: Next Called : 2996 ms
+DEBUG - Event Message: Next Called : 2997 ms
+DEBUG - Event Message: Next Called : 2997 ms
+DEBUG - Event Message: Next Called : 2999 ms
+DEBUG - Event Message: Next Called : 2999 ms
+DEBUG - Event Message: Next Called : 2999 ms
+DEBUG - Event Message: Next Called : 3000 ms
+DEBUG - Event Message: Fetching next batch of rows. : 3000 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 3410 ms
+DEBUG - Event Message: Next Called : 3412 ms
+DEBUG - Event Message: Next Called : 3412 ms
+DEBUG - Event Message: Next Called : 3412 ms
+DEBUG - Event Message: Next Called : 3412 ms
+DEBUG - Event Message: Next Called : 3412 ms
+DEBUG - Event Message: Next Called : 3412 ms
+DEBUG - Event Message: Next Called : 3413 ms
+DEBUG - Event Message: Next Called : 3413 ms
+DEBUG - Event Message: Next Called : 3413 ms
+DEBUG - Event Message: Next Called : 3413 ms
+DEBUG - Event Message: Fetching next batch of rows. : 3413 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 3931 ms
+DEBUG - Event Message: Next Called : 3931 ms
+DEBUG - Event Message: Next Called : 3931 ms
+DEBUG - Event Message: Next Called : 3931 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Next Called : 3932 ms
+DEBUG - Event Message: Fetching next batch of rows. : 3932 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 4223 ms
+DEBUG - Event Message: Next Called : 4224 ms
+DEBUG - Event Message: Next Called : 4226 ms
+DEBUG - Event Message: Next Called : 4226 ms
+DEBUG - Event Message: Next Called : 4227 ms
+DEBUG - Event Message: Next Called : 4227 ms
+DEBUG - Event Message: Next Called : 4228 ms
+DEBUG - Event Message: Next Called : 4228 ms
+DEBUG - Event Message: Next Called : 4228 ms
+DEBUG - Event Message: Next Called : 4229 ms
+DEBUG - Event Message: Next Called : 4229 ms
+DEBUG - Event Message: Fetching next batch of rows. : 4229 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 4466 ms
+DEBUG - Event Message: Next Called : 4466 ms
+DEBUG - Event Message: Next Called : 4467 ms
+DEBUG - Event Message: No more rows available to obtain. Finishing. : 4467 ms
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - STARTING DRIVER
+DEBUG - Using AWS accessId and SecretKey
+INFO - Executing Query 'SELECT mentions.fipscountrycode as _id, COUNT(*) as count FROM mentions GROUP BY mentions.fipscountrycode' with Execution ID: ba8487d9-b049-4277-9379-1bc8881af29f
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Finished Checking Connection. Starting Query:  : 0 ms
+DEBUG - Event Message: Query Started. : 1237 ms
+DEBUG - Event Message: Checking Query Status : 1237 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1353 ms
+DEBUG - Event Message: Sleeping until we retry. : 1353 ms
+DEBUG - Event Message: Checking Query Status : 1555 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1663 ms
+DEBUG - Event Message: Sleeping until we retry. : 1663 ms
+DEBUG - Event Message: Checking Query Status : 1864 ms
+DEBUG - Event Message: Finishing Checking Query Status : 1976 ms
+DEBUG - Event Message: Sleeping until we retry. : 1976 ms
+DEBUG - Event Message: Checking Query Status : 2179 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2314 ms
+DEBUG - Event Message: Sleeping until we retry. : 2314 ms
+DEBUG - Event Message: Checking Query Status : 2514 ms
+DEBUG - Event Message: Finishing Checking Query Status : 2626 ms
+DEBUG - Event Message: Sleeping until we retry. : 2626 ms
+DEBUG - Event Message: Checking Query Status : 2827 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3000 ms
+DEBUG - Event Message: Sleeping until we retry. : 3000 ms
+DEBUG - Event Message: Checking Query Status : 3204 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3418 ms
+DEBUG - Event Message: Sleeping until we retry. : 3418 ms
+DEBUG - Event Message: Checking Query Status : 3621 ms
+DEBUG - Event Message: Finishing Checking Query Status : 3733 ms
+DEBUG - Event Message: Sleeping until we retry. : 3733 ms
+DEBUG - Event Message: Checking Query Status : 3934 ms
+DEBUG - Event Message: Finishing Checking Query Status : 4047 ms
+DEBUG - Event Message: Query has Completed. : 4047 ms
+DEBUG - Event Message: Finished creating Result Set. : 4356 ms
+DEBUG - Event Message: Finished Executing query : 4356 ms
+DEBUG - Event Message: Timelog created : 0 ms
+DEBUG - Event Message: Next Called : 321 ms
+DEBUG - Event Message: Next Called : 322 ms
+DEBUG - Event Message: Next Called : 322 ms
+DEBUG - Event Message: Next Called : 322 ms
+DEBUG - Event Message: Next Called : 323 ms
+DEBUG - Event Message: Next Called : 323 ms
+DEBUG - Event Message: Next Called : 324 ms
+DEBUG - Event Message: Next Called : 324 ms
+DEBUG - Event Message: Next Called : 326 ms
+DEBUG - Event Message: Next Called : 327 ms
+DEBUG - Event Message: Fetching next batch of rows. : 327 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 715 ms
+DEBUG - Event Message: Next Called : 716 ms
+DEBUG - Event Message: Next Called : 716 ms
+DEBUG - Event Message: Next Called : 717 ms
+DEBUG - Event Message: Next Called : 717 ms
+DEBUG - Event Message: Next Called : 717 ms
+DEBUG - Event Message: Next Called : 719 ms
+DEBUG - Event Message: Next Called : 720 ms
+DEBUG - Event Message: Next Called : 720 ms
+DEBUG - Event Message: Next Called : 721 ms
+DEBUG - Event Message: Next Called : 721 ms
+DEBUG - Event Message: Fetching next batch of rows. : 721 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 972 ms
+DEBUG - Event Message: Next Called : 973 ms
+DEBUG - Event Message: Next Called : 973 ms
+DEBUG - Event Message: Next Called : 974 ms
+DEBUG - Event Message: Next Called : 975 ms
+DEBUG - Event Message: Next Called : 976 ms
+DEBUG - Event Message: Next Called : 976 ms
+DEBUG - Event Message: Next Called : 977 ms
+DEBUG - Event Message: Next Called : 977 ms
+DEBUG - Event Message: Next Called : 978 ms
+DEBUG - Event Message: Next Called : 978 ms
+DEBUG - Event Message: Fetching next batch of rows. : 978 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2284 ms
+DEBUG - Event Message: Next Called : 2284 ms
+DEBUG - Event Message: Next Called : 2284 ms
+DEBUG - Event Message: Next Called : 2285 ms
+DEBUG - Event Message: Next Called : 2285 ms
+DEBUG - Event Message: Next Called : 2286 ms
+DEBUG - Event Message: Next Called : 2286 ms
+DEBUG - Event Message: Next Called : 2286 ms
+DEBUG - Event Message: Next Called : 2287 ms
+DEBUG - Event Message: Next Called : 2287 ms
+DEBUG - Event Message: Next Called : 2287 ms
+DEBUG - Event Message: Fetching next batch of rows. : 2287 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 2808 ms
+DEBUG - Event Message: Next Called : 2810 ms
+DEBUG - Event Message: Next Called : 2812 ms
+DEBUG - Event Message: Next Called : 2812 ms
+DEBUG - Event Message: Next Called : 2812 ms
+DEBUG - Event Message: Next Called : 2813 ms
+DEBUG - Event Message: Next Called : 2813 ms
+DEBUG - Event Message: Next Called : 2813 ms
+DEBUG - Event Message: Next Called : 2814 ms
+DEBUG - Event Message: Next Called : 2814 ms
+DEBUG - Event Message: Next Called : 2814 ms
+DEBUG - Event Message: Fetching next batch of rows. : 2814 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 3223 ms
+DEBUG - Event Message: Next Called : 3223 ms
+DEBUG - Event Message: Next Called : 3223 ms
+DEBUG - Event Message: Next Called : 3224 ms
+DEBUG - Event Message: Next Called : 3224 ms
+DEBUG - Event Message: Next Called : 3224 ms
+DEBUG - Event Message: Next Called : 3225 ms
+DEBUG - Event Message: Next Called : 3226 ms
+DEBUG - Event Message: Next Called : 3226 ms
+DEBUG - Event Message: Next Called : 3227 ms
+DEBUG - Event Message: Next Called : 3227 ms
+DEBUG - Event Message: Fetching next batch of rows. : 3227 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 3496 ms
+DEBUG - Event Message: Next Called : 3497 ms
+DEBUG - Event Message: Next Called : 3497 ms
+DEBUG - Event Message: Next Called : 3497 ms
+DEBUG - Event Message: Next Called : 3498 ms
+DEBUG - Event Message: Next Called : 3498 ms
+DEBUG - Event Message: Next Called : 3499 ms
+DEBUG - Event Message: Next Called : 3499 ms
+DEBUG - Event Message: Next Called : 3499 ms
+DEBUG - Event Message: Next Called : 3500 ms
+DEBUG - Event Message: Next Called : 3500 ms
+DEBUG - Event Message: Fetching next batch of rows. : 3500 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 4998 ms
+DEBUG - Event Message: Next Called : 4998 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 4999 ms
+DEBUG - Event Message: Next Called : 5000 ms
+DEBUG - Event Message: Next Called : 5000 ms
+DEBUG - Event Message: Fetching next batch of rows. : 5000 ms
+DEBUG - Event Message: Completed fetching next batch of rows. hasNext() = true : 5286 ms
+DEBUG - Event Message: Next Called : 5286 ms
+DEBUG - Event Message: Next Called : 5286 ms
+DEBUG - Event Message: No more rows available to obtain. Finishing. : 5286 ms
