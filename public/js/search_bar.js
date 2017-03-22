@@ -12,7 +12,7 @@ var removeResults = function (evt) {
 
 var SearchBar = function (options) {
     this.searchTypes = {
-        ARTIST: 0,
+        COUNTRY: 0,
         SONG: 1
     };
     
@@ -20,13 +20,10 @@ var SearchBar = function (options) {
     this.currentArtist = null;
     
     this.options = $.extend({
-        selectedQueryType: this.searchTypes.ARTIST,
+        selectedQueryType: this.searchTypes.COUNTRY,
         queryTypes: [{
-            name: 'Artist',
-            url: 'api/streamwatch/artist'
-        },{
-            name: 'Song',
-            url: 'api/streamwatch/song'
+            name: 'Country',
+            url: 'api/country'
         }],
         onSubmit: function (evt) { console.log('onSubmit', evt); },
         onFilterUpdate: function (evt) { console.log('onFilterUpdate', evt); }
@@ -154,12 +151,12 @@ SearchBar.prototype.selectItem = function (evt) {
     }*/
 }
 
-SearchBar.prototype.showSongs = function (data) {
+SearchBar.prototype.showCountry = function (data) {
     var i;
-
+    console.log('data', data);
     for (i = 0; i < data.length; i++) {
-        $('<button id="' + data[i].artistMbId + '_' + data[i].song + '" type="button" class="list-group-item">' +
-            data[i].artists[0].name + ' - ' + data[i].song +
+        $('<button id="' + data[i].code + '_' + data[i].name + '" type="button" class="list-group-item">' +
+            data[i].name + ' - ' + data[i].code +
             '</button>')
         .hide()
         .appendTo('#search-results')
@@ -208,8 +205,8 @@ SearchBar.prototype.submit = function (evt) {
     
     $.get(this.options.queryTypes[this.options.selectedQueryType].url, { q: query })
     .done(function (data) {
-        if (this.options.selectedQueryType === this.searchTypes.SONG) {
-            this.showSongs(data);
+        if (this.options.selectedQueryType === this.searchTypes.COUNTRY) {
+            this.showCountry(data);
         } else {
             this.showArtists(data);
         }

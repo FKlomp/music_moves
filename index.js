@@ -293,6 +293,37 @@ var Server = {
 //             }.bind(this));
 //         }.bind(this));
 //
+
+        // app.get('/api/mentions/country/search', function (req, res) {
+        //
+        //     this.conn.createStatement(function(err, statement) {
+        //         if (err) res.send(err);
+        //
+        //         statement.setFetchSize(10, function(err) {
+        //             if (err) {
+        //                 callback(err);
+        //             } else {
+        //                 var query = 'SELECT mentions.globaleventid, mentions.fipscountrycode, mentions.countryhumanname, mentions.mentiondoctone, mentions.mentiontimedate ' +
+        //                             'FROM mentions ' +
+        //                             'WHERE mentions.globaleventid ' +
+        //                             "IN (SELECT events.globaleventid FROM events WHERE events.actiongeo_countrycode = 'NL')";
+        //
+        //                 statement.executeQuery(query,
+        //                     function(err, resultset) {
+        //                         if (err) {
+        //                             res.send(err)
+        //                         } else {
+        //                             resultset.toObjArray(function(err, results) {
+        //                                 res.json(results);
+        //                             });
+        //                         }
+        //                     }
+        //                 );
+        //             }
+        //         });
+        //     });
+        // }.bind(this));
+
         app.get('/api/mentions/country', function (req, res) {
             
             this.conn.createStatement(function(err, statement) {
@@ -302,14 +333,24 @@ var Server = {
                     if (err) {
                         callback(err);
                     } else {
-                        var query = 'SELECT mentions.fipscountrycode as _id, COUNT(*) as count ' +
-                        'FROM mentions ' +
-                        'GROUP BY mentions.fipscountrycode';
+                        var query;
+                        
+                        if (req.query.q) {
+                            query = 'SELECT mentions.fipscountrycode as _id, count(*) as count ' +
+                            'FROM mentions ' +
+                            'WHERE mentions.globaleventid ' +
+                            "IN (SELECT events.globaleventid FROM events WHERE events.actiongeo_countrycode = '" + req.query.q.trim() + "') " +
+                            'GROUP BY mentions.fipscountrycode ';
+                        } else {
+                            query = 'SELECT mentions.fipscountrycode as _id, COUNT(*) as count ' +
+                            'FROM mentions ' +
+                            'GROUP BY mentions.fipscountrycode';
+                        }
                         
                         statement.executeQuery(query,
                             function(err, resultset) {
                                 if (err) {
-                                    callback(err)
+                                    res.send(err)
                                 } else {
                                     resultset.toObjArray(function(err, results) {
                                         res.json(results);
@@ -347,6 +388,46 @@ var Server = {
             //         res.json(docs);
             //     });
             // }.bind(this));
+        }.bind(this));
+        
+        app.get('/api/country', function (req, res) {
+            
+            this.conn.createStatement(function(err, statement) {
+                if (err) res.send(err);
+                
+                statement.setFetchSize(10, function(err) {
+                    if (err) {
+                        callback(err);
+                    } else {
+                        var query;
+                        
+                        if (req.query.q) {
+                            query = 'SELECT mentions.fipscountrycode as code, mentions.countryhumanname as name ' +
+                                    'FROM mentions ' +
+                                    "WHERE mentions.countryhumanname LIKE '%" + req.query.q.trim() + "%' " +
+                                    'GROUP BY mentions.fipscountrycode, mentions.countryhumanname'
+                        } else {
+                            query = 'SELECT mentions.fipscountrycode as code, mentions.countryhumanname as name ' +
+                                    'FROM mentions ' +
+                                    'GROUP BY mentions.fipscountrycode, mentions.countryhumanname';
+                        }
+                        
+                        console.log('query', query);
+                        
+                        statement.executeQuery(query,
+                            function(err, resultset) {
+                                if (err) {
+                                    res.send(err)
+                                } else {
+                                    resultset.toObjArray(function(err, results) {
+                                        res.json(results);
+                                    });
+                                }
+                            }
+                        );
+                    }
+                });
+            });
         }.bind(this));
 //
 //         app.get('/api/streamwatch/artist/monthly', function (req, res) {
